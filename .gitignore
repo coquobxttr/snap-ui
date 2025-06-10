@@ -3,5 +3,5 @@
 /.prettierignore
 /.prettierrc
 /.svelte-kit
-dist
+dist/
 /bun.lock

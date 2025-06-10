@@ -2,7 +2,7 @@
     import { Nora } from "$lib/index.js";
 </script>
 
-<Nora.Div width=300 height = 200 bgColour="ffffff">
+<Nora.Card width=300 height = 200 bgColour="ffffff">
     <Nora.Button bgColour="f57a81" id="defaultButton">
         This is a button
     </Nora.Button>
@@ -11,7 +11,7 @@
         <br>
         <em>With multiple lines!</em>
     </Nora.Tooltip>
-</Nora.Div>
+</Nora.Card>
 
 <Nora.Button bgColour="ffffff" id="dropdownButton">Dropdown</Nora.Button>
 <Nora.Dropdown targetId="dropdownButton">

@@ -4,7 +4,7 @@ export declare const Nora: {
         children: any;
         id: any;
     }, {}, "">;
-    Div: import("svelte").Component<{
+    Card: import("svelte").Component<{
         children: any;
         width: any;
         height: any;

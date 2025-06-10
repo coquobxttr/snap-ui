@@ -18,4 +18,11 @@ export declare const Nora: {
         arrow?: boolean;
         children: any;
     }, {}, "">;
+    Dropdown: import("svelte").Component<{
+        targetId: any;
+        bgColour?: string;
+        placement?: string;
+        arrow?: boolean;
+        children: any;
+    }, {}, "">;
 };

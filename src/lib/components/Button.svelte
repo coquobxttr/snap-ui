@@ -41,13 +41,12 @@
 
     function autoTextColour(bgColour: string) {
         const brightness = getRelativeLuminance(bgColour)
-        return brightness > 128 ? 'black' : 'white'
+        return brightness > 0.5 ? 'black' : 'white'
     }
-
 </script>
 
 <button
-    class="rounded-lg p-1.5 pl-3 pr-3 m-2 font-medium shadow-md border-1"
+    class="rounded-lg p-1.5 pl-3 pr-3 m-2 font-medium shadow-md border-1 cursor-pointer"
     style="--bg: #{bgColour}; --bg-hover: #{darkerBg}; --text-colour: {textColour};"
     id="{id}"
 >

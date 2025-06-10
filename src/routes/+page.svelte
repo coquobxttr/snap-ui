@@ -12,3 +12,11 @@
         <em>With multiple lines!</em>
     </Nora.Tooltip>
 </Nora.Div>
+
+<Nora.Button bgColour="ffffff" id="dropdownButton">Dropdown</Nora.Button>
+<Nora.Dropdown targetId="dropdownButton">
+    <ul>
+        <li>Thing 1</li>
+        <li>Thing 2</li>
+    </ul>
+</Nora.Dropdown>

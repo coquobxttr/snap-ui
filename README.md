@@ -76,6 +76,6 @@ MIT - see [LICENSE](LICENSE.md) file for details.
 ---
 
 <div align="center">
-<a href="[github-url]">⭐ Star this on GitHub</a> •
+<a href="[https://github.com/coquobxttr/nora-kit.git]">⭐ Star this on GitHub</a> •
 <a href="[docs-url]">📚 Documentation</a>
 </div>

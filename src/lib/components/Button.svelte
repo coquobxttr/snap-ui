@@ -4,7 +4,6 @@
     let textColour = autoTextColour(bgColour)
 
     function darkerColour(colour: String) {
-
         let r = colour.substring(0,2)
         let g = colour.substring(2,4)
         let b = colour.substring(4,7)
@@ -46,7 +45,7 @@
 </script>
 
 <button
-    class="rounded-lg p-1.5 pl-3 pr-3 m-2 font-medium shadow-md border-1 cursor-pointer"
+    class="rounded-lg p-1.5 pl-3 pr-3 m-4 font-medium shadow-md border-1 cursor-pointer"
     style="--bg: #{bgColour}; --bg-hover: #{darkerBg}; --text-colour: {textColour};"
     id="{id}"
 >
@@ -58,6 +57,7 @@
         background-color: var(--bg);
         color: var(--text-colour);
         border-color: var(--bg-hover);
+        width: fit-content;
     }
 
     button:hover {

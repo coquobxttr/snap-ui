@@ -1,32 +1,10 @@
-# **Nora-kit**
-A modern, accessible Svelte component library that combines simplicity with deep customization. Built for developers who want components that work out of the box but can be tailored to any design system.
+# **NoraKit - a Sveltekit UI Component Library**
 
-## **✨ Features**
-- **Simple by default** - Drop in components with sensible defaults
-- **Deeply customizable** - Override styles, behaviors, and structure
-- **TypeScript first** - Full type safety and IntelliSense support
-- **Accessible** - WCAG 2.1 AA compliant components
-- **Tree-shakeable** - Import only what you need
-- **Theme-aware** - Built-in dark mode and custom theme support
-- **Zero dependencies** - Pure Svelte components
+NoraKit is a modern, accessible Svelte UI component library that combines simplicity with deep customization. Built for developers who want components that work out of the box but can be tailored to any design system.
 
-## **🚀 Quick Start**
-```bash
-npm install nora-kit
-```
+---
 
-```svelte
-<script>
-import { Button, Card, Input } from 'nora-kit';
-</script>
-
-<Card>
-<Input placeholder="Enter your name" />
-<Button>Get Started</Button>
-</Card>
-```
-
-## **📦 Installation**
+## **Installation**
 
 ### **Package Manager**
 ```bash
@@ -39,73 +17,38 @@ pnpm add nora-kit
 # yarn
 yarn add nora-kit
 
-#bun
+# bun
 bun add nora-kit
 ```
 
-### **Tailwind CSS Setup**
-Nora-kit requires Tailwind CSS to be installed in your SvelteKit project. Follow these steps:
+### **Tailwindcss**
+NoraKit uses **Tailwind v4.1** with the **typography and forms** plugins. See the [website](http://omg) for a more detailed tutorial on how to install.
 
-1. **Install Tailwind CSS and its dependencies:**
 ```bash
-npm install tailwindcss @tailwindcss/vite
+npm install -D @tailwindcss/typography
+npm install -D @tailwindcss/forms
 ```
 
-2. **Add the @tailwindcss/vite plugin to your Vite configuration.**
+---
+## **Usage**
+
+### **Dropdown Example**
 ```svelte
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    sveltekit(),
-  ],
-});
-```
-
-3. **Create a ./src/app.css file and add an @import that imports Tailwind CSS.**
-```bash
-@import "tailwindcss";
-```
-
-4. **Create a ./src/routes/+layout.svelte file and import the newly-created app.css file.**
-```svelte
-<script>
-  let { children } = $props();
-  import "../app.css";
-</script>
-{@render children()}
-```
-
-## **🎯 Philosophy**
-Nora-kit follows the principle of **progressive enhancement**:
-1. **Level 1**: Works immediately with zero configuration
-2. **Level 2**: Customize with props and CSS variables
-3. **Level 3**: Override internal structure with slots
-4. **Level 4**: Create completely custom variants
-
-## **🧩 Components**
-### **Form Components**
-- `Button` - Versatile button with multiple variants
-- `Dropdown` - Dropdown selection with search
-- `Card` - Flexible container component
-- `Tooltip` - Accessible tooltip component
-
-**and more to come...**
-
-## **🎨 Customization**
-### **Component Props**
-```svelte
-<Button bgColour="f57a81" id="defaultButton">
- This is a button
-</Button>
+<Nora.Button bgColour="ffffff" id="dropdownButton">Dropdown</Nora.Button>
+<Nora.Dropdown targetId="dropdownButton">
+    <ul>
+        <li>Thing 1</li>
+        <hr/>
+        <li>Thing 2</li>
+    </ul>
+</Nora.Dropdown>
 ```
 
 ## **🧪 Development**
+
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/nora-kit.git
+git clone https://github.com/coquobxttr/nora-kit.git
 
 # Install dependencies
 npm install
@@ -116,25 +59,23 @@ npm run dev
 # Run tests
 npm test
 
-# Build library
+# Build
 npm run build
 ```
 
-## **📄 License**
-MIT License - see [LICENSE](LICENSE) file for details.
+## **License**
 
-## **🙏 Acknowledgments**
-- Inspired by the simplicity of [Tailwind UI](https://tailwindui.com)
-- Built with the power of [Svelte](https://svelte.dev)
-- Icons provided by [Lucide](https://lucide.dev)
+MIT - see [LICENSE](LICENSE.md) file for details.
+
+## **Acknowledgments**
+
+- Sveltekit
+- Tailwindcss
+- MDsveX for the docs site (coming soon)
 
 ---
 
 <div align="center">
-<strong>Made with ❤️ for the Svelte community</strong>
-</div>
-
-<div align="center">
-<a href="https://github.com/coquobxttr/nora-kit">⭐ Star this on GitHub</a> •
-<a href="https://nora-kit.dev">📚 Documentation (coming soon)</a>
+<a href="[github-url]">⭐ Star this on GitHub</a> •
+<a href="[docs-url]">📚 Documentation</a>
 </div>

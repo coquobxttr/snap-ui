@@ -1,111 +1,22 @@
 <script lang="ts">
-    import { onMount, tick } from "svelte";
-
+    import { onMount, tick } from 'svelte';
+    
     let { 
         targetId, 
-        bgColour = "ffffff",
         placement = "top", 
-        arrow = true,
+        trigger = "click",
+        bgColour = "ffffff",
         children
     } = $props();
-    let darkerBg = darkerColour(bgColour);
-    let textColour = autoTextColour(bgColour);
-
-    let dropdownElement: HTMLDivElement | undefined = $state();
+    
+    let DropdownElement: HTMLDivElement | undefined = $state();
     let targetElement: HTMLElement | null = null;
     let isVisible = $state(false);
-    let dropdownPosi = $state({ top: 0, left: 0 });
-    
-    onMount(() => {
-        // Find the target element by ID
-        targetElement = document.getElementById(targetId);
-        
-        if (!targetElement) {
-            console.warn(`Dropdown target element with ID "${targetId}" not found`);
-            return;
-        }
-        
-        // Add event listeners based on trigger type
-        targetElement.addEventListener('click', toggleDropdown);
-        document.addEventListener('click', handleOutsideClick);
-        
-        return () => {
-            if (targetElement) {
-                targetElement.removeEventListener('click', toggleDropdown);
-            }
-            document.removeEventListener('click', handleOutsideClick);
-        };
-    });
-    
-    function hideDropdown() {
-        isVisible = false;
-    }
-    
-    function toggleDropdown() {
-        isVisible = !isVisible;
-        if (isVisible) {
-            tick().then(() => {
-                tick().then(calculatePosition);
-            });
-        }
-    }
-    
-    function handleOutsideClick(event: MouseEvent) {
-        if (dropdownElement && !dropdownElement.contains(event.target as Node) && 
-            targetElement && !targetElement.contains(event.target as Node)) {
-            hideDropdown();
-        }
-    }
-    
-    function calculatePosition() {
-        if (!targetElement || !dropdownElement) return;
-        
-        const targetRect = targetElement.getBoundingClientRect();
-        const dropdownRect = dropdownElement.getBoundingClientRect();
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        let top = 0;
-        let left = 0;
-        
-        // Add offset for arrow (8px) to account for arrow space
-        const arrowOffset = arrow ? 8 : 4;
-        
-        switch (placement) {
-            case "top":
-                top = targetRect.top + scrollTop - dropdownRect.height - arrowOffset;
-                left = targetRect.left + scrollLeft + (targetRect.width / 2) - (dropdownRect.width / 2);
-                break;
-            case "bottom":
-                top = targetRect.bottom + scrollTop + arrowOffset;
-                left = targetRect.left + scrollLeft + (targetRect.width / 2) - (dropdownRect.width / 2);
-                break;
-            case "left":
-                top = targetRect.top + scrollTop + (targetRect.height / 2) - (dropdownRect.height / 2);
-                left = targetRect.left + scrollLeft - dropdownRect.width - arrowOffset;
-                break;
-            case "right":
-                top = targetRect.top + scrollTop + (targetRect.height / 2) - (dropdownRect.height / 2);
-                left = targetRect.right + scrollLeft + arrowOffset;
-                break;
-        }
-        
-        // Ensure dropdown stays within viewport
-        const padding = 8;
-        if (left < padding) left = padding;
-        if (left + dropdownRect.width > window.innerWidth - padding) {
-            left = window.innerWidth - dropdownRect.width - padding;
-        }
-        if (top < padding) top = padding;
-        if (top + dropdownRect.height > window.innerHeight + scrollTop - padding) {
-            top = window.innerHeight + scrollTop - dropdownRect.height - padding;
-        }
-        
-        dropdownPosi = { top, left };
-    }
+    let dropdownPosition = $state({ top: 0, left: 0 });
+    let darkerBg = darkerColour(bgColour);
+    let textColour = autoTextColour(bgColour)
 
     function darkerColour(colour: String) {
-
         let r = colour.substring(0,2)
         let g = colour.substring(2,4)
         let b = colour.substring(4,7)
@@ -144,33 +55,146 @@
         const brightness = getRelativeLuminance(bgColour)
         return brightness > 0.5 ? 'black' : 'white'
     }
+    
+    onMount(() => {
+        // Find the target element by ID
+        targetElement = document.getElementById(targetId);
+        
+        if (!targetElement) {
+            console.warn(`Dropdown target element with ID "${targetId}" not found`);
+            return;
+        }
+        
+        // Add event listeners
+        targetElement.addEventListener('click', toggleDropdown);
+        document.addEventListener('click', handleOutsideClick);
+        
+        return () => {
+            if (targetElement) {
+                targetElement.removeEventListener('mouseenter', showDropdown);
+                targetElement.removeEventListener('mouseleave', hideDropdown);
+                targetElement.removeEventListener('click', toggleDropdown);
+            }
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    });
+    
+    async function showDropdown() {
+        isVisible = true;
+        await tick(); // Wait for DOM update
+        await tick(); // Extra tick to ensure Dropdown is fully rendered
+        calculatePosition();
+    }
+    
+    function hideDropdown() {
+        isVisible = false;
+    }
+    
+    function toggleDropdown() {
+        isVisible = !isVisible;
+        if (isVisible) {
+            tick().then(() => {
+                tick().then(calculatePosition);
+            });
+        }
+    }
+    
+    function handleOutsideClick(event: MouseEvent) {
+        if (DropdownElement && !DropdownElement.contains(event.target as Node) && 
+            targetElement && !targetElement.contains(event.target as Node)) {
+            hideDropdown();
+        }
+    }
+    
+    function calculatePosition() {
+        if (!targetElement || !DropdownElement) return;
+        
+        const targetRect = targetElement.getBoundingClientRect();
+        const DropdownRect = DropdownElement.getBoundingClientRect();
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        let top = 0;
+        let left = 0;
+    
+        
+        switch (placement) {
+            case "top":
+                top = targetRect.top + scrollTop - DropdownRect.height;
+                left = targetRect.left + scrollLeft + (targetRect.width / 2) - (DropdownRect.width / 2);
+                break;
+            case "bottom":
+                top = targetRect.bottom + scrollTop;
+                left = targetRect.left + scrollLeft + (targetRect.width / 2) - (DropdownRect.width / 2);
+                break;
+            case "left":
+                top = targetRect.top + scrollTop + (targetRect.height / 2) - (DropdownRect.height / 2);
+                left = targetRect.left + scrollLeft - DropdownRect.width;
+                break;
+            case "right":
+                top = targetRect.top + scrollTop + (targetRect.height / 2) - (DropdownRect.height / 2);
+                left = targetRect.right + scrollLeft;
+                break;
+        }
+        
+        // Ensure Dropdown stays within viewport
+        const padding = 8;
+        if (left < padding) left = padding;
+        if (left + DropdownRect.width > window.innerWidth - padding) {
+            left = window.innerWidth - DropdownRect.width - padding;
+        }
+        if (top < padding) top = padding;
+        if (top + DropdownRect.height > window.innerHeight + scrollTop - padding) {
+            top = window.innerHeight + scrollTop - DropdownRect.height - padding;
+        }
+        
+        dropdownPosition = { top, left };
+    }
 </script>
 
 {#if isVisible}
     <div
-        class="rounded-xl"
+        class="rounded-xl m-4 mt-0"
+        id="dropMenu"
         style="--bg: #{bgColour}; --bg-hover: #{darkerBg}; --text-colour: {textColour};
-                top: {dropdownPosi.top}px;
-                left: {dropdownPosi.left}px;"
+                top: {dropdownPosition.top}px;
+                left: {dropdownPosition.left}px;"
     >
     {@render children()}
     </div>
 {/if}
 
 <style>
-    div { 
+    div {
         border-color: var(--bg-hover);
         border-style: solid;
         border-width: 1px;
-        width: fit-content;
+        width: 150px;
         overflow: hidden;
         display: flex;
         justify-content: center;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        transform: scale(0.8);
+        transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+        animation: dropdown-show 0.15s ease-out forwards;
+    }
+
+    @keyframes dropdown-show {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    #dropMenu :global(ul hr) {
+        width: 50%;
+        margin: auto;
     }
 
     div :global(ul) {
-        width: fit-content;
+        text-align: center;
+        width: 100%;
     }
 
     div :global(li) {
@@ -178,16 +202,9 @@
         padding: 5px;
         padding-left: 20px;
         padding-right: 20px;
-        border-bottom: 1px;
-        border-style: solid;
-        border-color: var(--bg-hover);
     }
 
     div :global(li):hover {
         background: var(--bg-hover);
-    }
-
-    div :global(li):last-child {
-        border-bottom: none;
     }
 </style>

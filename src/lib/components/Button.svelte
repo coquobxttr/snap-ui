@@ -1,5 +1,15 @@
 <script lang="ts">
-    let { bgColour, children, id } = $props()
+    let {
+        bgColour = "ffffff",
+        children, id = "button",
+        onClick = () => {}
+    }: {
+        bgColour?: string,
+        children: import('svelte').Snippet;
+        id?: string,
+        onClick?: (event: MouseEvent) => void;
+    } = $props()
+    
     let darkerBg = darkerColour(bgColour);
     let textColour = autoTextColour(bgColour)
 
@@ -48,6 +58,7 @@
     class="rounded-lg p-1.5 pl-3 pr-3 m-4 font-medium shadow-md border-1 cursor-pointer"
     style="--bg: #{bgColour}; --bg-hover: #{darkerBg}; --text-colour: {textColour};"
     id="{id}"
+    onclick={onClick}
 >
     {@render children()}
 </button>

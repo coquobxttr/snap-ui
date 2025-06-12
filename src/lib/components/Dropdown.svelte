@@ -4,7 +4,6 @@
     let { 
         targetId, 
         placement = "top", 
-        trigger = "click",
         bgColour = "ffffff",
         children
     } = $props();
@@ -188,8 +187,9 @@
     }
 
     #dropMenu :global(ul hr) {
-        width: 50%;
+        width: 75%;
         margin: auto;
+        color: var(--bg-hover);
     }
 
     div :global(ul) {

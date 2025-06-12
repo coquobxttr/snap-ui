@@ -1,5 +1,5 @@
 <script lang="ts">
-    let { children, width, height, bgColour } = $props()
+    let { children, width, height, bgColour = "ffffff" } = $props()
     let borderColour = darkerColour(bgColour);
 
     function darkerColour(colour: String) {

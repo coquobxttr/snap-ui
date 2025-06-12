@@ -1,6 +1,6 @@
 {
 	"name": "nora-kit",
-	"version": "0.1.2",
+	"version": "0.1.5-alpha",
 	"license": "MIT",
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",

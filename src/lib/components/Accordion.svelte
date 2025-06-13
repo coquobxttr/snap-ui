@@ -57,7 +57,6 @@
     }
     
     function toggleItem(index: number) {
-        console.log('Toggling item:', index); // Debug log
         const newOpenItems = new Set(openItems);
         
         if (allowMultiple) {
@@ -88,10 +87,10 @@
 
 <div class="rounded-lg overflow-hidden border-1" style="border-color: #{darkerBg}; width: {width}px;">
     {#each accordionItems as item, index}
-        <div class="accordion-item" style="border-color: #{darkerBg};">
+        <div class="b border-b-1 border-solid" style="border-color: #{darkerBg};">
             <!-- Header -->
             <button
-                class="accordion-header w-full text-left p-4 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full text-left p-4 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500 hover:brightness-95"
                 style="background-color: #{bgColour}; color: {textColour};"
                 onclick={() => toggleItem(index)}
                 onkeydown={(e) => handleKeydown(e, index)}
@@ -99,8 +98,7 @@
             >
                 <span class="font-medium">{item.title}</span>
                 <span 
-                    class="accordion-icon transition-transform duration-200"
-                    class:rotate-180={openItems.has(index)}
+                    class="font-[0.875rem] transition-transform duration-200 {openItems.has(index) ? 'rotate-180' : ''}"
                 >
                     ▼
                 </span>
@@ -121,27 +119,3 @@
         </div>
     {/each}
 </div>
-
-<style>
-    .accordion-header:hover {
-        filter: brightness(0.95);
-    }
-    
-    .accordion-icon {
-        font-size: 0.875rem;
-        transition: transform 0.2s ease;
-    }
-
-    .accordion-item {
-        border-bottom: 1px;
-        border-style: solid;
-    }
-
-    .accordion-item:last-child {
-        border-bottom: 0;
-    }
-    
-    .rotate-180 {
-        transform: rotate(180deg);
-    }
-</style>

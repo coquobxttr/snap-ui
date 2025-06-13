@@ -1,7 +1,6 @@
 {
 	"name": "nora-kit",
-	"version": "0.1.5-alpha",
-	"license": "MIT",
+	"version": "0.1.6-alpha",
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
@@ -19,6 +18,7 @@
 		"eslint-plugin-svelte": "^3.0.0",
 		"globals": "^16.0.0",
 		"jsdom": "^26.0.0",
+		"mdsvex": "^0.12.3",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
@@ -49,6 +49,7 @@
 	"keywords": [
 		"svelte"
 	],
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -67,5 +68,8 @@
 	],
 	"svelte": "./dist/index.js",
 	"type": "module",
-	"types": "./dist/index.d.ts"
+	"types": "./dist/index.d.ts",
+	"dependencies": {
+		"shiki": "^3.6.0"
+	}
 }

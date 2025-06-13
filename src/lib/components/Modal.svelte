@@ -69,8 +69,8 @@
 
 <!-- Trigger Button -->
 <button 
-    class="w-fit rounded-lg p-1.5 pl-3 pr-3 m-4 font-medium shadow-md border-1 cursor-pointer"
-    style="--bg: #{bgColour}; --bg-hover: #{darkerBg}; --text-colour: {textColour};"
+    class="w-fit rounded-lg p-1.5 pl-3 pr-3 m-4 font-medium shadow-md border cursor-pointer"
+    style="background-color: #{bgColour}; hover:background-color: #{darkerBg}; border-color: #{darkerBg};"
     onclick={openModal}
 >
     {triggerText}
@@ -110,12 +110,3 @@
         </div>
     </div>
 {/if}
-
-<style>
-    button {
-        border-color: var(--bg-hover);
-    }
-    button:hover {
-        background-color: var(--bg-hover);
-    }
-</style>

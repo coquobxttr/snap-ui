@@ -21,7 +21,7 @@
 </script>
 
 <div
-    class="rounded-xl m-4 shadow-md border-1"
+    class="rounded-xl m-4 shadow-md border"
     style="width: {width}px; height: {height}px; background-color: #{bgColour}; border-color: #{borderColour}">
     {@render children()}
 </div>

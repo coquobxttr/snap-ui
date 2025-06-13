@@ -1,0 +1,203 @@
+---
+title: "Accordion"
+desc: "A flexible, accessible accordion component with smooth animations and customizable styling."
+category: "Components"
+order: 3
+---
+<script>
+import { Nora } from "../../../lib/index.ts";
+</script>
+
+## Features
+
+- **Smooth animations** - Uses Svelte's built-in slide transition
+- **Flexible content** - Supports HTML content in accordion panels
+- **Accessibility** - Full keyboard navigation and ARIA attributes
+- **Customizable styling** - Configurable colors and dimensions
+- **Multiple modes** - Allow single or multiple panels open simultaneously
+- **Auto color contrast** - Automatically determines text color based on background
+
+## Basic Usage
+
+```svelte
+<script>
+    import { Nora } from 'nora-kit';
+
+    const items = [
+        {
+            title: "What is this accordion?",
+            content: "<p>This is the first accordion item.</p>"
+        },
+        {
+            title: "How does it work?",
+            content: "<p>Click on any header to expand or collapse the content.</p>"
+        }
+    ];
+</script>
+
+<Nora.Accordion {items}/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `Array<{title: string, content: string}>` | `[]` | Array of accordion items with title and HTML content |
+| `bgColour` | `string` | `"ffffff"` | Background color as hex string (without #) |
+| `allowMultiple` | `boolean` | `false` | Whether multiple panels can be open simultaneously |
+| `width` | `number` | `300` | Width of the accordion in pixels |
+
+## Examples
+
+### Basic Accordion
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Accordion
+        width={400}
+        allowMultiple={false}
+        items={[
+            {
+            title: "This accordion can only open 1 at a time",
+            content: "<p>This is the first accordion item. It contains <strong>HTML content</strong> and can be expanded or collapsed.</p>"
+            },
+            {
+            title: "How does it work?",
+            content: "<p>Click on any header to expand or collapse the content. You can have multiple items open at once!</p>"
+            }
+        ]}
+    />
+</div>
+
+```svelte
+<Nora.Accordion
+    width={400}
+    allowMultiple={false}
+    items={[
+        {
+        title: "This accordion can only open 1 at a time",
+        content: "<p>This is the first accordion item. It contains <strong>HTML content</strong> and can be expanded or collapsed.</p>"
+        },
+        {
+        title: "How does it work?",
+        content: "<p>Click on any header to expand or collapse the content. You can have multiple items open at once!</p>"
+        }
+    ]}
+/>
+```
+
+### Multiple Panels Open
+
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Accordion
+        width={400}
+        allowMultiple={true}
+        items={[
+            {
+            title: "This accordion can open multiple at a time?",
+            content: "<p>This is the first accordion item. It contains <strong>HTML content</strong> and can be expanded or collapsed.</p>"
+            },
+            {
+            title: "How does it work?",
+            content: "<p>Click on any header to expand or collapse the content. You can have multiple items open at once!</p>"
+            }
+        ]}
+    />
+</div>
+
+```svelte
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Accordion
+        width={400}
+        allowMultiple={true}
+        items={[
+            {
+            title: "This accordion can open multiple at a time?",
+            content: "<p>This is the first accordion item. It contains <strong>HTML content</strong> and can be expanded or collapsed.</p>"
+            },
+            {
+            title: "How does it work?",
+            content: "<p>Click on any header to expand or collapse the content. You can have multiple items open at once!</p>"
+            }
+        ]}
+    />
+</div>
+```
+
+### Custom Styling
+
+```svelte
+<Accordion
+bgColour="2563eb"
+width={500}
+items={[
+{
+    title: "Blue Accordion",
+    content: "<p>This accordion has a blue background with auto-contrasted text.</p>"
+}
+]}
+/>
+```
+
+### Rich HTML Content
+
+```svelte
+<Accordion
+items={[
+{
+    title: "Rich Content",
+    content: `
+        <div>
+            <h3>Subheading</h3>
+            <p>You can include <strong>any HTML</strong> in the content.</p>
+            <ul>
+                <li>Lists work great</li>
+                <li>Images, links, everything!</li>
+            </ul>
+        </div>
+    `
+}
+]}
+/>
+```
+
+## Accessibility
+
+The accordion component includes full accessibility support:
+
+- **Keyboard Navigation**: Use Enter or Space to toggle panels
+- **ARIA Attributes**: Proper `aria-expanded` states for screen readers
+- **Focus Management**: Clear focus indicators with customizable focus rings
+- **Color Contrast**: Automatic text color calculation ensures readable contrast ratios
+
+### Keyboard Controls
+
+| Key | Action |
+|-----|--------|
+| `Enter` | Toggle the focused accordion panel |
+| `Space` | Toggle the focused accordion panel |
+| `Tab` | Navigate between accordion headers |
+
+## Behavior
+
+### Single Panel Mode (default)
+When `allowMultiple={false}`, only one panel can be open at a time. Opening a new panel automatically closes the previously open panel.
+
+### Multiple Panel Mode
+When `allowMultiple={true}`, users can have multiple panels open simultaneously. Each panel toggles independently.
+
+### Default Content
+If no `items` are provided, the component displays two default items for demonstration purposes.
+
+## Styling Notes
+
+- The component uses a hex color format without the `#` symbol for the `bgColour` prop
+- Border colors are automatically calculated as a darker shade of the background color
+- Text color is automatically determined based on the background luminance for optimal contrast
+- The component includes hover effects that slightly darken the background on interaction
+
+## Browser Support
+
+This component uses modern Svelte features and CSS properties. It supports all modern browsers and requires:
+
+- Svelte 5+ (uses runes syntax)
+- CSS transitions support
+- CSS transform support for the rotation animation

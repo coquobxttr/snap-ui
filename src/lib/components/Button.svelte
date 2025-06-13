@@ -1,12 +1,15 @@
 <script lang="ts">
     let {
         bgColour = "ffffff",
-        children, id = "button",
+        children,
+        id = "button",
+        margin = 16,
         onClick = () => {}
     }: {
         bgColour?: string,
         children: import('svelte').Snippet;
         id?: string,
+        margin?: number,
         onClick?: (event: MouseEvent) => void;
     } = $props()
     
@@ -55,23 +58,10 @@
 </script>
 
 <button
-    class="rounded-lg p-1.5 pl-3 pr-3 m-4 font-medium shadow-md border-1 cursor-pointer"
-    style="--bg: #{bgColour}; --bg-hover: #{darkerBg}; --text-colour: {textColour};"
+    class="w-fit h-fit rounded-lg p-1.5 pl-3 pr-3 font-medium shadow-md border-1 cursor-pointer hover:brightness-90"
+    style="background-color: #{bgColour}; color: {textColour}; border-color: #{darkerBg}; margin: {margin}px"
     id="{id}"
     onclick={onClick}
 >
     {@render children()}
 </button>
-
-<style>
-    button {
-        background-color: var(--bg);
-        color: var(--text-colour);
-        border-color: var(--bg-hover);
-        width: fit-content;
-    }
-
-    button:hover {
-        background-color: var(--bg-hover);
-    }
-</style>

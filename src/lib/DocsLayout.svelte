@@ -22,8 +22,16 @@
         category: string
     }
 
+    interface Heading {
+        id: string;
+        text: string;
+        level: number;
+    }
+
     let docs: Doc[] = $state([]);
     let docCategories: string[] = $state([]);
+    let headings: Heading[] = $state([]);
+    let activeHeading: string = $state('');
 
     onMount(async () => {
         const modules = import.meta.glob('/src/routes/docs/**/*.svx');
@@ -44,15 +52,69 @@
         //sort by order
         docs = docList.sort((a, b) => a.order - b.order);
 
-        console.log(docList)
-
         //add add categories to list
         for (let i = 0; i < docs.length; i++) {
             if (docCategories.includes(docs[i].category)) {
                 continue 
             } else docCategories.push(docs[i].category);
         }
+
+        // Extract headings from the rendered content
+        extractHeadings();
+        
+        // Set up intersection observer for active heading tracking
+        setupIntersectionObserver();
     })
+
+    function extractHeadings() {
+        const docColumn = document.getElementById('docColumn');
+        if (!docColumn) return;
+
+        const headingElements = docColumn.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        
+        headings = Array.from(headingElements).map((heading, index) => {
+            // Generate ID if it doesn't exist
+            if (!heading.id) {
+                heading.id = heading.textContent?.toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/\s+/g, '-') || `heading-${index}`;
+            }
+            
+            return {
+                id: heading.id,
+                text: heading.textContent || '',
+                level: parseInt(heading.tagName.charAt(1))
+            };
+        });
+    }
+
+    function setupIntersectionObserver() {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        activeHeading = entry.target.id;
+                    }
+                });
+            },
+            {
+                rootMargin: '-20% 0% -35% 0%',
+                threshold: 0
+            }
+        );
+
+        headings.forEach((heading) => {
+            const element = document.getElementById(heading.id);
+            if (element) observer.observe(element);
+        });
+    }
+
+    function scrollToHeading(headingId: string) {
+        const element = document.getElementById(headingId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
     function nextPage(order: number) {
         goto(`/docs/${docs[order].title}`)
@@ -61,8 +123,6 @@
     function prevPage(order: number) {
         goto(`/docs/${docs[order-2].title}`)
     }
-
-
 </script>
 
 <div id="Main" class="grid grid-cols-[1fr_2.5fr_1fr]">
@@ -101,11 +161,11 @@
             {/each}
         </ul>
     </div>
-    <div id="docColumn" class="col-span-3 lg:col-span-1">
+    <div id="docColumn" class="col-span-3 lg:col-span-1 overflow-y-auto max-h-screen">
         <div class="flex flex-row w-full items-center">
             <div class="prose m-10 mb-auto ">
                 <h1 class="mb-0">{title}</h1>
-                <p>{desc}</p>
+                <p class="text-gray-500">{desc}</p>
             </div>
             <div class="justify-center items-center min-w-24 m-10 ml-auto">
                 {#if (order == 1)}
@@ -125,6 +185,25 @@
         </div>
     </div>
     <div id="headersColumn" class="hidden lg:block m-10">
-        Headers Column
+        <div class="prose">
+            <h3 class="mb-4">On this page</h3>
+            {#if headings.length > 0}
+                <nav class="space-y-1">
+                    {#each headings as heading}
+                        <button
+                            class="block w-full text-left text-sm py-1 px-2 rounded transition-colors hover:bg-gray-100 {
+                                activeHeading === heading.id ? 'bg-blue-50 text-blue-600' : 'text-gray-600'
+                            }"
+                            style="margin-left: {(heading.level - 1) * 12}px"
+                            onclick={() => scrollToHeading(heading.id)}
+                        >
+                            {heading.text}
+                        </button>
+                    {/each}
+                </nav>
+            {:else}
+                <p class="text-gray-500 text-sm">No headings found</p>
+            {/if}
+        </div>
     </div>
 </div>

@@ -22,7 +22,7 @@ bun add nora-kit
 ```
 
 ### **Tailwindcss**
-NoraKit uses **Tailwind v4.1** with the **typography and forms** plugins. See the [website](http://omg) for a more detailed tutorial on how to install.
+NoraKit uses **Tailwind v4.1** with the **typography and forms** plugins. See the [website](https://tailwindcss.com/docs/installation/framework-guides/sveltekit) for a more detailed tutorial on how to install.
 
 ```bash
 npm install -D @tailwindcss/typography

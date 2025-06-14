@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const theme = 'github-dark';
 const highlighter = await createHighlighter({
 	themes: [theme],
-	langs: ['javascript', 'typescript', 'svelte']
+	langs: ['javascript', 'typescript', 'svelte', 'bash']
 });
 
 const config = {

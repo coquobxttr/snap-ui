@@ -1,6 +1,7 @@
 import Accordian from "./components/Accordion.svelte";
 import Button from "./components/Button.svelte";
 import Card from "./components/Card.svelte";
+import CodeTab from "./components/CodeTab.svelte";
 import Dropdown from "./components/Dropdown.svelte";
 import Hero from "./components/Hero.svelte";
 import Modal from "./components/Modal.svelte";
@@ -13,5 +14,6 @@ export const Nora = {
     Dropdown: Dropdown,
     Modal: Modal,
     Accordion: Accordian,
-    Hero: Hero
+    Hero: Hero,
+    CodeTab: CodeTab
 }

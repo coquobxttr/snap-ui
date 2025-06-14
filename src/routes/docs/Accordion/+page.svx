@@ -8,15 +8,6 @@ order: 3
 import { Nora } from "../../../lib/index.ts";
 </script>
 
-## Features
-
-- **Smooth animations** - Uses Svelte's built-in slide transition
-- **Flexible content** - Supports HTML content in accordion panels
-- **Accessibility** - Full keyboard navigation and ARIA attributes
-- **Customizable styling** - Configurable colors and dimensions
-- **Multiple modes** - Allow single or multiple panels open simultaneously
-- **Auto color contrast** - Automatically determines text color based on background
-
 ## Basic Usage
 
 ```svelte
@@ -159,15 +150,6 @@ items={[
 />
 ```
 
-## Accessibility
-
-The accordion component includes full accessibility support:
-
-- **Keyboard Navigation**: Use Enter or Space to toggle panels
-- **ARIA Attributes**: Proper `aria-expanded` states for screen readers
-- **Focus Management**: Clear focus indicators with customizable focus rings
-- **Color Contrast**: Automatic text color calculation ensures readable contrast ratios
-
 ### Keyboard Controls
 
 | Key | Action |
@@ -178,26 +160,5 @@ The accordion component includes full accessibility support:
 
 ## Behavior
 
-### Single Panel Mode (default)
-When `allowMultiple={false}`, only one panel can be open at a time. Opening a new panel automatically closes the previously open panel.
-
-### Multiple Panel Mode
-When `allowMultiple={true}`, users can have multiple panels open simultaneously. Each panel toggles independently.
-
 ### Default Content
 If no `items` are provided, the component displays two default items for demonstration purposes.
-
-## Styling Notes
-
-- The component uses a hex color format without the `#` symbol for the `bgColour` prop
-- Border colors are automatically calculated as a darker shade of the background color
-- Text color is automatically determined based on the background luminance for optimal contrast
-- The component includes hover effects that slightly darken the background on interaction
-
-## Browser Support
-
-This component uses modern Svelte features and CSS properties. It supports all modern browsers and requires:
-
-- Svelte 5+ (uses runes syntax)
-- CSS transitions support
-- CSS transform support for the rotation animation

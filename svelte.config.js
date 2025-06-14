@@ -6,7 +6,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { createHighlighter } from 'shiki';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const theme = 'github-dark';
+const theme = 'github-light';
 const highlighter = await createHighlighter({
 	themes: [theme],
 	langs: ['javascript', 'typescript', 'svelte', 'bash']

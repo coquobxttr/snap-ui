@@ -1,6 +1,14 @@
 <script lang="ts">
-    let { children, width, height, bgColour = "ffffff" } = $props()
+    let { 
+        children,
+        width = 300,
+        height = 200,
+        bgColour = "ffffff"
+    } = $props()
+
     let borderColour = darkerColour(bgColour);
+
+
 
     function darkerColour(colour: String) {
 
@@ -18,10 +26,18 @@
 
         return `${r}${g}${b}`
     }
+    
 </script>
 
 <div
-    class="rounded-xl m-4 shadow-md border"
-    style="width: {width}px; height: {height}px; background-color: #{bgColour}; border-color: #{borderColour}">
+    class="rounded-xl m-4 shadow-md border flex flex-col"
+    style="width: {width}px; height: {height}px; background-color: #{bgColour}; border-color: #{borderColour}"
+>
     {@render children()}
 </div>
+
+<style>
+    :global(#card > div) {
+        position: absolute;
+    }
+</style>

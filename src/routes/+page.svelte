@@ -8,4 +8,3 @@
     <p>Everything you need to build a stellar documentation website. Fast, accessible, and easy-to-use.</p>
     <Nora.Button onClick={() => goto('/docs/Introduction')}>Get Started</Nora.Button>
 </Nora.Hero>
-

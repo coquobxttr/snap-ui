@@ -1,7 +1,136 @@
 ---
 title: "Button"
-desc: "I deleted it lol."
+desc: "A customizable button component with automatic text contrast and hover effects."
 category: "Components"
 order: 4
 ---
-ahahah
+<script>
+import { Nora } from "../../../lib/index.ts";
+</script>
+
+## Basic Usage
+
+```svelte
+<script>
+    import { Nora } from 'nora-kit';
+</script>
+
+<Nora.Button>Click me</Nora.Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `bgColour` | `string` | `"ffffff"` | Background color as hex string (without #) |
+| `id` | `string` | `"button"` | HTML id attribute for the button |
+| `margin` | `number` | `16` | Margin around the button in pixels |
+| `onClick` | `(event: MouseEvent) => void` | `() => {}` | Click event handler |
+| `children` | `Snippet` | Required | Button content (text, icons, etc.) |
+
+## Examples
+
+### Basic Button
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Button>Default Button</Nora.Button>
+</div>
+
+```svelte
+<Nora.Button>Default Button</Nora.Button>
+```
+
+### Custom Colors
+
+<div class="flex justify-center items-center mt-15 mb-15 gap-4">
+    <Nora.Button bgColour="fadedc">Pink</Nora.Button>
+    <Nora.Button bgColour="8F00FF">Violet</Nora.Button>
+    <Nora.Button bgColour="16a34a">Green</Nora.Button>
+</div>
+
+```svelte
+<Nora.Button bgColour="2563eb">Blue Button</Nora.Button>
+<Nora.Button bgColour="dc2626">Red Button</Nora.Button>
+<Nora.Button bgColour="16a34a">Green Button</Nora.Button>
+```
+
+### Dark Colors with Text Auto-Contrast
+
+<div class="flex justify-center items-center mt-15 mb-15 gap-4">
+    <Nora.Button bgColour="1f2937">Dark Gray</Nora.Button>
+    <Nora.Button bgColour="7c2d12">Dark Brown</Nora.Button>
+    <Nora.Button bgColour="581c87">Dark Purple</Nora.Button>
+</div>
+
+```svelte
+<Nora.Button bgColour="1f2937">Dark Gray</Nora.Button>
+<Nora.Button bgColour="7c2d12">Dark Brown</Nora.Button>
+<Nora.Button bgColour="581c87">Dark Purple</Nora.Button>
+```
+
+### With Click Handler
+
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Button 
+        bgColour="f59e0b" 
+        onClick={(e) => alert('Button clicked!')}
+    >
+        Click for Alert
+    </Nora.Button>
+</div>
+
+```svelte
+<script>
+    function handleClick(event) {
+        alert('Button clicked!');
+        console.log('Click event:', event);
+    }
+</script>
+
+<Nora.Button 
+    bgColour="f59e0b" 
+    onClick={handleClick}
+>
+    Click for Alert
+</Nora.Button>
+```
+
+### Custom Spacing
+
+<div class="flex justify-center items-center mt-15 mb-15 gap-8">
+    <Nora.Button margin={8}>Small Margin</Nora.Button>
+    <Nora.Button margin={24}>Default Margin</Nora.Button>
+    <Nora.Button margin={40}>Large Margin</Nora.Button>
+</div>
+
+```svelte
+<Nora.Button margin={8}>Small Margin</Nora.Button>
+<Nora.Button margin={24}>Default Margin</Nora.Button>
+<Nora.Button margin={40}>Large Margin</Nora.Button>
+```
+
+### Complex Content
+
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Button bgColour="059669">
+        <span>🚀</span>
+        <strong>Launch App</strong>
+    </Nora.Button>
+</div>
+
+```svelte
+<Nora.Button bgColour="059669">
+    <span>🚀</span>
+    <strong>Launch App</strong>
+</Nora.Button>
+```
+
+## Behavior
+
+### Automatic Text Contrast
+The component automatically calculates the optimal text color (black or white) based on the background color's relative luminance, ensuring proper readability and accessibility.
+
+### Hover Effects
+All buttons include a subtle brightness reduction on hover (`hover:brightness-90`) for better user interaction feedback.
+
+### Border Styling
+The component automatically generates a darker border color based on the background color for enhanced visual depth.

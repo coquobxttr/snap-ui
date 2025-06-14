@@ -46,7 +46,7 @@
     }
 </script>
 
-<div class="my-6 rounded-xl border border-gray-200 overflow-hidden bg-white shadow-lg">
+<div class=" w-4/5 my-6 rounded-xl border border-gray-200 overflow-hidden bg-gray-800 shadow-lg">
     <!-- Tab Headers -->
     <div class="flex h-10 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
         {#each tabs as tab}
@@ -68,7 +68,7 @@
         {#each tabs as tab}
             {#if activeTab === tab.id}
                 <div class="text-gray-100 p-1 overflow-x-auto">
-                    <pre class="text-sm leading-relaxed"><code class="text-green-400">{tab.code}</code></pre>
+                    <pre class="text-sm leading-relaxed"><code class="text-white">{tab.code}</code></pre>
                 </div>
             {/if}
         {/each}
@@ -77,7 +77,7 @@
         <!-- svelte-ignore a11y_consider_explicit_label -->
         <button
             onclick={copyToClipboard}
-            class="absolute top-3 right-3 p-2.5 bg-gray-700/80 hover:bg-gray-600/80 
+            class="absolute top-3 right-3 p-2 bg-gray-700/80 hover:bg-gray-600/80 
                          text-gray-300 hover:text-white rounded-lg text-xs transition-all duration-200
                          backdrop-blur-sm border border-gray-600/50 hover:border-gray-500/50
                          shadow-lg hover:shadow-xl group"

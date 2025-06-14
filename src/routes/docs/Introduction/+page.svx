@@ -5,4 +5,4 @@ category: "Getting Started"
 order: 1
 ---
 
-ahahahah
+this is a passion project that I'm very proud of ☺️

@@ -115,48 +115,71 @@ import { Nora } from "../../../lib/index.ts";
 
 ### Custom Styling
 
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Accordion
+        bgColour="2563eb"
+        width={500}
+        items={[
+        {
+            title: "Blue Accordion",
+            content: "<p>This accordion has a blue background with auto-contrasted text.</p>"
+        }
+        ]}
+    />
+</div>
+
 ```svelte
-<Accordion
-bgColour="2563eb"
-width={500}
-items={[
-{
-    title: "Blue Accordion",
-    content: "<p>This accordion has a blue background with auto-contrasted text.</p>"
-}
-]}
+<Nora.Accordion
+    bgColour="2563eb"
+    width={500}
+    items={[
+    {
+        title: "Blue Accordion",
+        content: "<p>This accordion has a blue background with auto-contrasted text.</p>"
+    }
+    ]}
 />
 ```
 
 ### Rich HTML Content
 
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.Accordion
+        items={[
+        {
+            title: "Rich Content",
+            content: `
+                <div>
+                    <h3>Subheading</h3>
+                    <p>You can include <strong>any HTML</strong> in the content.</p>
+                    <ul>
+                        <li>Lists work great</li>
+                        <li>Images, links, everything!</li>
+                    </ul>
+                </div>
+            `
+        }]}
+    />
+</div>
+
 ```svelte
-<Accordion
-items={[
-{
-    title: "Rich Content",
-    content: `
-        <div>
-            <h3>Subheading</h3>
-            <p>You can include <strong>any HTML</strong> in the content.</p>
-            <ul>
-                <li>Lists work great</li>
-                <li>Images, links, everything!</li>
-            </ul>
-        </div>
-    `
-}
-]}
+<Nora.Accordion
+    items={[
+    {
+        title: "Rich Content",
+        content: `
+            <div>
+                <h3>Subheading</h3>
+                <p>You can include <strong>any HTML</strong> in the content.</p>
+                <ul>
+                    <li>Lists work great</li>
+                    <li>Images, links, everything!</li>
+                </ul>
+            </div>
+        `
+    }]}
 />
 ```
-
-### Keyboard Controls
-
-| Key | Action |
-|-----|--------|
-| `Enter` | Toggle the focused accordion panel |
-| `Space` | Toggle the focused accordion panel |
-| `Tab` | Navigate between accordion headers |
 
 ## Behavior
 

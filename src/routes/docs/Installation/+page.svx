@@ -1,6 +1,6 @@
 ---
 title: "Installation"
-desc: "wow"
+desc: "How to install dependencies and structure your app"
 category: "Getting Started"
 order: 2
 ---
@@ -10,7 +10,9 @@ order: 2
 
 ### Package Manager
 
-<Nora.CodeTab npm="npm install nora-kit" pnpm="pnpm add nora-kit" yarn="yarn add nora-kit" bun="bun add nora-kit"/>
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Nora.CodeTab npm="npm install nora-kit" pnpm="pnpm add nora-kit" yarn="yarn add nora-kit" bun="bun add nora-kit"/>
+</div>
 
 ### Tailwindcss
 NoraKit uses **Tailwind v4.1** with the **typography and forms** plugins. See the [website](https://tailwindcss.com/docs/installation/framework-guides/sveltekit) for a more detailed tutorial on how to install.
@@ -20,8 +22,8 @@ npm install -D @tailwindcss/typography
 npm install -D @tailwindcss/forms
 ```
 
-### Configure stuff
-add this to app.css
+### Configure tailwindcss
+Link tailwind to the package components
 ```css
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
@@ -29,49 +31,5 @@ add this to app.css
 + @source "../node_modules/nora-kit/dist/components";
 ```
 
----
-## Usage
 
-### Dropdown Example
-```svelte
-<Nora.Button bgColour="ffffff" id="dropdownButton">Dropdown</Nora.Button>
-<Nora.Dropdown targetId="dropdownButton">
-    <ul>
-        <li>Thing 1</li>
-        <hr/>
-        <li>Thing 2</li>
-    </ul>
-</Nora.Dropdown>
-```
-
-## 🧪 Development
-
-```bash
-# Clone the repository
-git clone https://github.com/coquobxttr/nora-kit.git
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Run tests
-npm test
-
-# Build
-npm run build
-```
-
-## License
-
-MIT - see [LICENSE](LICENSE.md) file for details.
-
-## Acknowledgments
-
-- Sveltekit
-- Tailwindcss
-- MDsveX for the docs site (coming soon)
-
----
 

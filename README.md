@@ -44,7 +44,7 @@ npm install -D @tailwindcss/forms
 </Nora.Dropdown>
 ```
 
-## **🧪 Development**
+## **Development**
 
 ```bash
 # Clone the repository

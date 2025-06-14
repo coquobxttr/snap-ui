@@ -4,31 +4,41 @@
         children,
         id = "button",
         margin = 16,
+        width = "fit-content",
+        height = "fit-content",
         onClick = () => {}
     }: {
         bgColour?: string,
         children: import('svelte').Snippet;
         id?: string,
         margin?: number,
+        width?: string,
+        height?: string
         onClick?: (event: MouseEvent) => void;
     } = $props()
     
     let darkerBg = darkerColour(bgColour);
     let textColour = autoTextColour(bgColour)
 
-    function darkerColour(colour: String) {
+    function darkerColour(colour: string) {
         let r = colour.substring(0,2)
         let g = colour.substring(2,4)
-        let b = colour.substring(4,7)
-
+        let b = colour.substring(4,6) // Fixed: was (4,7)
+        
         let rInt: number = parseInt(r, 16)
         let gInt: number = parseInt(g, 16)
         let bInt: number = parseInt(b, 16)
-
-        r = (rInt - 30).toString(16)
-        g = (gInt - 30).toString(16)
-        b = (bInt - 30).toString(16)
-
+        
+        // Subtract 30 but ensure we don't go below 0
+        rInt = Math.max(0, rInt - 20)
+        gInt = Math.max(0, gInt - 20)
+        bInt = Math.max(0, bInt - 20)
+        
+        // Convert back to hex with proper padding
+        r = rInt.toString(16).padStart(2, '0')
+        g = gInt.toString(16).padStart(2, '0')
+        b = bInt.toString(16).padStart(2, '0')
+        
         return `${r}${g}${b}`
     }
 
@@ -58,10 +68,16 @@
 </script>
 
 <button
-    class="w-fit h-fit rounded-lg p-1.5 pl-3 pr-3 font-medium shadow-md border-1 cursor-pointer hover:brightness-90"
-    style="background-color: #{bgColour}; color: {textColour}; border-color: #{darkerBg}; margin: {margin}px"
+    class="rounded-lg p-1.5 pl-3 pr-3 font-medium shadow-md border-1 cursor-pointer hover:brightness-90"
+    style="--text-colour: #{textColour}; background-color: #{bgColour}; color: {textColour}; border-color: #{darkerBg}; margin: {margin}px; width: {width}; height: {height}"
     id="{id}"
     onclick={onClick}
 >
     {@render children()}
 </button>
+
+<style>
+    button :global(*) {
+        color: var(--text-colour);
+    }
+</style>

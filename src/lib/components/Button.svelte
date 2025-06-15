@@ -68,7 +68,7 @@
 </script>
 
 <button
-    class="flex flex-row rounded-lg p-1.5 pl-3 pr-3 font-medium shadow-md border-1 cursor-pointer hover:brightness-90"
+    class="flex flex-row rounded-lg p-1.5 pl-3 pr-3 font-medium shadow-md border-1 cursor-pointer"
     style="--text-colour: #{textColour}; background-color: #{bgColour}; color: {textColour}; border-color: #{darkerBg}; margin: {margin}px; width: {width}; height: {height}"
     id="{id}"
     onclick={onClick}

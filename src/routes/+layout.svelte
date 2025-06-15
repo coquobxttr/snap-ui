@@ -3,8 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { Nora } from '$lib/index.js';
 	import { onMount } from 'svelte';
-
-	import AlignJustify from '@lucide/svelte/icons/align-justify';
+	import Button from '$lib/components/Button.svelte';
 
 	let { children } = $props();
 
@@ -28,13 +27,25 @@
 	
 </script>
 
-<header class="w-full h-20 flex flex-row items-center">
+{#snippet headingButton(text: string)}
+	<Nora.Button shadow={false} border={false}>
+		{text}
+	</Nora.Button>
+{/snippet}
+
+<header class="w-full h-fit flex flex-row items-center">
 	<div class="hidden md:block ml-5">
-		    <Nora.Button onClick={() => goto('/')}>NoraKit</Nora.Button>
+		    <a class="ml-5" href={'/'}>NoraKit</a>
 	</div>
 
 	<div class="block md:hidden">
-		    <Nora.Button onClick={() => goto('/')}>Sidebar Button</Nora.Button>
+		    <a class="ml-5" href={'/'}>N</a>
+	</div>
+
+	<div class="hidden md:flex">
+		{@render headingButton("Components")}
+		{@render headingButton("Block")}
+		{@render headingButton("Themes")}
 	</div>
 
 	<div class="flex-row justify-center items-center right-0 ml-auto p-5 hidden md:flex">
@@ -47,14 +58,14 @@
 		<p class="text-sm">{stars}</p>
 	</div>
 	<div class="flex-row justify-center items-center right-0 ml-auto flex md:hidden">
-		<Nora.Button>
-			<AlignJustify/>
+		<Nora.Button shadow={false} border={false}>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M4 18h16M4 6h16"/></svg>
 		</Nora.Button>
 	</div>
 </header>
 {@render children()}
-<footer id="footer" class="w-full h-10 flex justify-center items-center">
-    <p>
-		Built by <a href="https://www.linkedin.com/in/z-adeniji/"><u>Zainab Adeniji</u></a>
+<footer id="footer" class="w-full h-fit flex justify-center items-center">
+    <p class="pb-5">
+		Built by <a href="https://www.linkedin.com/in/z-adeniji/"><u>Zainab Adeniji</u></a> for the <a href="https://svelte.dev"><u>Sveltekit community</u></a>
 	</p>
 </footer>

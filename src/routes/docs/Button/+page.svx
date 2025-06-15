@@ -108,22 +108,6 @@ import { Nora } from "../../../lib/index.ts";
 <Nora.Button margin={40}>Large Margin</Nora.Button>
 ```
 
-### Complex Content
-
-<div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Button bgColour="059669">
-        <span>🚀</span>
-        <strong>Launch App</strong>
-    </Nora.Button>
-</div>
-
-```svelte
-<Nora.Button bgColour="059669">
-    <span>🚀</span>
-    <strong>Launch App</strong>
-</Nora.Button>
-```
-
 ## Behavior
 
 ### Automatic Text Contrast

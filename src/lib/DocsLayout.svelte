@@ -4,9 +4,6 @@
     import { onMount } from "svelte";
     import { page } from "$app/state";
 
-    import ArrowBigRight from '@lucide/svelte/icons/arrow-big-right'
-    import ArrowBigLeft from '@lucide/svelte/icons/arrow-big-left'
-
     let { children, title, desc, order, category} = $props();
 
     interface SvxModule {
@@ -128,7 +125,30 @@
     }
 </script>
 
-<div id="Main" class="grid grid-cols-[1fr_2.5fr_1fr] h-[calc(100vh-130px)]">
+
+<!--Snippets-->
+{#snippet nextDocsPage()}
+    <a
+        href="/docs/{docs[order].title}"
+        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col w-1/2 h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300"
+    >
+        <p class="text-right text-sm">Next page</p>
+        <p class="font-medium text-right">{docs[order].title}</p>
+    </a>
+{/snippet}
+
+{#snippet prevDocsPage()}
+    <a
+        href="/docs/{docs[order - 2].title}"
+        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col w-1/2 h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300"
+    >
+        <p class=" text-sm">Previous page</p>
+       <p class="font-medium text-left">{docs[order - 2].title}</p>
+    </a>
+{/snippet}
+
+
+<div id="Main" class="grid grid-cols-[1fr_2.5fr_1fr] h-[calc(100vh-115px)]">
     <div id="contentsColumn" class="prose hidden md:block m-10 overflow-y-auto h-full">
         <h3 class="mb-4">Contents</h3>
         <ul class="space-y-2 p-0 list-none">
@@ -183,30 +203,18 @@
                 {/if}                
             </div>
         </div>
-        <div class="prose m-10 mt-10">
+        <div class="prose my-10 p-10">
             {@render children()}
         </div>
-        <div class="flex flex-row justify-center items-center w-full h-25">
+        <div class="flex flex-row justify-center items-center w-full h-fit mb-10">
             {#if (docs.length > 0)}
                 {#if (order == 1)}
-                    <Nora.Button onClick={() => nextPage(order)}>
-                        {docs[order].title}
-                        <ArrowBigRight />
-                    </Nora.Button>
+                    {@render nextDocsPage()}
                 {:else if (order >= docs.length)}
-                    <Nora.Button onClick={() => prevPage(order)}>
-                        <ArrowBigLeft />
-                        {docs[order - 2].title}
-                    </Nora.Button>
+                    {@render prevDocsPage()}
                 {:else}
-                    <Nora.Button onClick={() => prevPage(order)}>
-                        <ArrowBigLeft />
-                        {docs[order - 2].title}
-                    </Nora.Button>
-                    <Nora.Button onClick={() => nextPage(order)}>
-                        {docs[order].title}
-                        <ArrowBigRight />
-                    </Nora.Button>
+                    {@render prevDocsPage()}
+                    {@render nextDocsPage()}
                 {/if}
             {/if}
         </div>
@@ -218,8 +226,8 @@
                 <nav class="space-y-1">
                     {#each headings as heading}
                         <button
-                            class="block w-full text-left text-sm py-1 px-2 pl-3 rounded-md transition-colors hover:bg-gray-100 {
-                                activeHeading === heading.id ? 'bg-blue-50 text-blue-600' : 'text-gray-600'
+                            class="block w-full text-gray-600 text-left text-sm py-1 px-2 pl-3 rounded-md transition-colors hover:bg-gray-100 {
+                                activeHeading === heading.id ? 'bg-gray-100' : 'bg-white'
                             }"
                             style="margin-left: {(heading.level - 1) * 12}px"
                             onclick={() => scrollToHeading(heading.id)}

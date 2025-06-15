@@ -6,6 +6,8 @@
         margin = 16,
         width = "fit-content",
         height = "fit-content",
+        shadow = true,
+        border = true,
         onClick = () => {}
     }: {
         bgColour?: string,
@@ -14,6 +16,8 @@
         margin?: number,
         width?: string,
         height?: string
+        shadow?: boolean,
+        border?: boolean,
         onClick?: (event: MouseEvent) => void;
     } = $props()
     
@@ -68,8 +72,8 @@
 </script>
 
 <button
-    class="flex flex-row rounded-lg p-1.5 pl-3 pr-3 font-medium shadow-md border-1 cursor-pointer"
-    style="--text-colour: #{textColour}; background-color: #{bgColour}; color: {textColour}; border-color: #{darkerBg}; margin: {margin}px; width: {width}; height: {height}"
+    class={`flex flex-row rounded-lg p-1.5 pl-3 pr-3 font-medium ${border ? 'border-1' : ''} cursor-pointer ${shadow ? 'shadow-md' : 'l'}`}
+    style="--bg: #{bgColour}; --text-colour: #{textColour}; --darker-colour: #{darkerBg}; color: {textColour}; border-color: #{darkerBg}; margin: {margin}px; width: {width}; height: {height}"
     id="{id}"
     onclick={onClick}
 >
@@ -77,7 +81,16 @@
 </button>
 
 <style>
+    button {
+        background-color: var(--bg);
+        transition: 0.3s;
+    }
+
     button :global(*) {
         color: var(--text-colour);
+    }
+
+    button:hover {
+        background-color: var(--darker-colour);
     }
 </style>

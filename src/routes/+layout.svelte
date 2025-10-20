@@ -64,9 +64,8 @@
 		</div>
 	</header>
 	<Snap.Drawer zIndex={50} trigger={drawer}>
+		<Snap.Button onClick={() => goto('/')}>Home</Snap.Button>
 		<Snap.Button onClick={() => goto('/docs/accordion')}>Components</Snap.Button>
-		<Snap.Button onClick={() => goto('/blocks')}>Blocks</Snap.Button>
-		<Snap.Button onClick={() => goto('/themes')}>Themes</Snap.Button>
 	</Snap.Drawer>
 	{@render children()}
 	<footer id="footer" class="w-full h-fit flex justify-center items-center">

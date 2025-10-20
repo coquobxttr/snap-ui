@@ -1,7 +1,108 @@
 ---
 title: "Code Tab"
-desc: "A customizable button component with automatic text contrast and hover effects."
+desc: "A tabbed code block component for displaying package manager commands with syntax highlighting and copy functionality."
 category: "Components"
 order: 6
 ---
-empty
+<script>
+import { Snap } from "../../../lib/index.ts";
+</script>
+
+## Basic Usage
+
+```svelte
+<script>
+    import { Snap } from 'snap-ui';
+</script>
+
+<Snap.CodeTab
+    npm="npm install package-name"
+    yarn="yarn add package-name"
+    pnpm="pnpm add package-name"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `npm` | `string` | `""` | npm command to display |
+| `yarn` | `string` | `""` | yarn command to display |
+| `pnpm` | `string` | `""` | pnpm command to display |
+| `bun` | `string` | `""` | bun command to display |
+| `defaultTab` | `string` | `"npm"` | Which tab to show by default |
+
+## Examples
+
+### All Package Managers
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Snap.CodeTab
+        npm="npm install nora-kit"
+        yarn="yarn add nora-kit"
+        pnpm="pnpm add nora-kit"
+        bun="bun add nora-kit"
+    />
+</div>
+
+```svelte
+<Snap.CodeTab
+    npm="npm install nora-kit"
+    yarn="yarn add nora-kit"
+    pnpm="pnpm add nora-kit"
+    bun="bun add nora-kit"
+/>
+```
+
+### Subset of Package Managers
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Snap.CodeTab
+        npm="npm run dev"
+        pnpm="pnpm dev"
+    />
+</div>
+
+```svelte
+<Snap.CodeTab
+    npm="npm run dev"
+    pnpm="pnpm dev"
+/>
+```
+
+### Different Default Tab
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Snap.CodeTab
+        npm="npm create vite@latest"
+        yarn="yarn create vite"
+        pnpm="pnpm create vite"
+        bun="bun create vite"
+        defaultTab="pnpm"
+    />
+</div>
+
+```svelte
+<Snap.CodeTab
+    npm="npm create vite@latest"
+    yarn="yarn create vite"
+    pnpm="pnpm create vite"
+    bun="bun create vite"
+    defaultTab="pnpm"
+/>
+```
+
+## Behavior
+
+### Dynamic Tab Display
+Only tabs with provided code values are displayed. If you only provide `npm` and `pnpm`, only those two tabs will appear.
+
+### Copy to Clipboard
+The copy button in the top-right corner copies the currently active tab's code to the clipboard.
+
+### Color-Coded Tabs
+Each package manager has its own color scheme:
+- **npm**: Red accent
+- **yarn**: Blue accent
+- **pnpm**: Yellow accent
+- **bun**: Yellow accent
+
+### Responsive Width
+The component uses `w-4/5` width by default and adapts to different screen sizes with horizontal scrolling for long commands.

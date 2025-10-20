@@ -12,7 +12,7 @@ import { Snap } from "../../../lib/index.ts";
 
 ```svelte
 <script>
-    import { Snap } from 'nora-kit';
+    import { Snap } from 'snap-ui';
 
     const items = [
         {

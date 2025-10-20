@@ -1,7 +1,157 @@
 ---
 title: "Card"
-desc: "A customizable button component with automatic text contrast and hover effects."
+desc: "A flexible container component with customizable dimensions and automatic border styling."
 category: "Components"
 order: 5
 ---
-empty
+<script>
+import { Snap } from "../../../lib/index.ts";
+</script>
+
+## Basic Usage
+
+```svelte
+<script>
+    import { Snap } from 'snap-ui';
+</script>
+
+<Snap.Card>
+    <h3>Card Title</h3>
+    <p>Your content goes here.</p>
+</Snap.Card>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `string` | `"100"` | Width of the card (adds "px" if not specified) |
+| `height` | `string` | `"100"` | Minimum height of the card (adds "px" if not specified) |
+| `bgColour` | `string` | `"ffffff"` | Background color as hex string (without #) |
+| `prose` | `string` | `"false"` | Enable prose styling for rich text content ("true" or "false") |
+| `children` | `Snippet` | Required | Card content |
+
+## Examples
+
+### Basic Card
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Snap.Card width="300" height="150">
+        <h3>Simple Card</h3>
+        <p>This is a basic card with default styling.</p>
+    </Snap.Card>
+</div>
+
+```svelte
+<Snap.Card width="300" height="150">
+    <h3>Simple Card</h3>
+    <p>This is a basic card with default styling.</p>
+</Snap.Card>
+```
+
+### Custom Colors
+<div class="flex justify-center items-center mt-15 mb-15 gap-4 flex-wrap">
+    <Snap.Card bgColour="dbeafe" width="250" height="120">
+        <h4>Blue Card</h4>
+        <p>Light blue background</p>
+    </Snap.Card>
+    <Snap.Card bgColour="fef3c7" width="250" height="120">
+        <h4>Yellow Card</h4>
+        <p>Warm yellow tones</p>
+    </Snap.Card>
+    <Snap.Card bgColour="dcfce7" width="250" height="120">
+        <h4>Green Card</h4>
+        <p>Fresh green vibes</p>
+    </Snap.Card>
+</div>
+
+```svelte
+<Snap.Card bgColour="dbeafe" width="250" height="120">
+    <h4>Blue Card</h4>
+    <p>Light blue background</p>
+</Snap.Card>
+
+<Snap.Card bgColour="fef3c7" width="250" height="120">
+    <h4>Yellow Card</h4>
+    <p>Warm yellow tones</p>
+</Snap.Card>
+```
+
+### Different Sizes
+<div class="flex justify-center items-center mt-15 mb-15 gap-4 flex-wrap">
+    <Snap.Card width="200" height="100">
+        <p>Small card</p>
+    </Snap.Card>
+    <Snap.Card width="300" height="150">
+        <p>Medium card</p>
+    </Snap.Card>
+    <Snap.Card width="400" height="200">
+        <p>Large card</p>
+    </Snap.Card>
+</div>
+
+```svelte
+<Snap.Card width="200" height="100">
+    <p>Small card</p>
+</Snap.Card>
+
+<Snap.Card width="300" height="150">
+    <p>Medium card</p>
+</Snap.Card>
+
+<Snap.Card width="400" height="200">
+    <p>Large card</p>
+</Snap.Card>
+```
+
+### With Prose Styling
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Snap.Card prose="true" width="400" height="200">
+        <h2>Article Title</h2>
+        <p>When prose is enabled, the card applies rich text formatting that makes your content look great with proper typography spacing and styling.</p>
+        <ul>
+            <li>Lists are styled nicely</li>
+            <li>Text has proper spacing</li>
+        </ul>
+    </Snap.Card>
+</div>
+
+```svelte
+<Snap.Card prose="true" width="400" height="200">
+    <h2>Article Title</h2>
+    <p>When prose is enabled, the card applies rich text formatting.</p>
+    <ul>
+        <li>Lists are styled nicely</li>
+        <li>Text has proper spacing</li>
+    </ul>
+</Snap.Card>
+```
+
+### Rich Content Card
+<div class="flex justify-center items-center mt-15 mb-15">
+    <Snap.Card bgColour="f3f4f6" width="350" height="200">
+        <h3>Profile Card</h3>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Role:</strong> Developer</p>
+        <p><strong>Status:</strong> Active</p>
+    </Snap.Card>
+</div>
+
+```svelte
+<Snap.Card bgColour="f3f4f6" width="350" height="200">
+    <h3>Profile Card</h3>
+    <p><strong>Name:</strong> John Doe</p>
+    <p><strong>Role:</strong> Developer</p>
+    <p><strong>Status:</strong> Active</p>
+</Snap.Card>
+```
+
+## Behavior
+
+### Automatic Border Color
+The component automatically generates a darker border color based on the background color by reducing RGB values by 30, creating subtle visual depth.
+
+### Responsive Width
+Cards are responsive with `max-w-[90vw]` on mobile and `max-w-full` on larger screens, ensuring they don't overflow on small devices.
+
+### Flexible Height
+The `height` prop sets a minimum height, allowing the card to grow with content while maintaining a baseline size.

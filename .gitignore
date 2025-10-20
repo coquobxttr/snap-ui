@@ -3,6 +3,4 @@
 /.prettierignore
 /.prettierrc
 /.svelte-kit
-dist/
-/bun.lock
 /node_modules

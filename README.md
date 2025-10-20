@@ -1,6 +1,6 @@
 # **SnapUI - a Sveltekit UI Component Library**
 
-SnapUI is a modern, accessible Svelte UI component library that combines simplicity with deep customization. Built for developers who want components that work out of the box but can be tailored to any design system.
+A small collection of Svelte components. They're accessible, customizable, and don't try to do too much.
 
 ---
 

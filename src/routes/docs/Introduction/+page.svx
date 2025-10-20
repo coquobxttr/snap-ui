@@ -1,8 +1,30 @@
 ---
 title: "Introduction"
-desc: "wow"
+desc: "A minimal Svelte component library. Built for fun, shared in case it's useful."
 category: "Getting Started"
 order: 1
 ---
 
-this is a passion project that I'm very proud of ☺️
+## What is this?
+
+Just a small collection of components I've built and refined while working on various projects. Nothing groundbreaking—simple, accessible UI pieces that work well together.
+
+## Philosophy
+
+- **Minimal by default** - Only what you need, nothing more
+- **Accessible** - Proper semantics and keyboard navigation
+- **Unstyled (mostly)** - Bring your own styles, or use the minimal defaults
+- **No dependencies** - Just Svelte
+
+## Why make this?
+
+Honestly? I kept rebuilding the same components across projects. Figured I'd package them up properly and maybe they'd be useful to someone else too.
+
+---
+
+That's it. Check out the next page to see how to install
+
+## A note
+
+This is a passion project! Expect rough edges and the occasional breaking change. If something doesn't work or could be better, feel free to open an issue
+...or don't. It's all good.

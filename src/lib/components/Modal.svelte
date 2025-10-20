@@ -6,7 +6,7 @@
         title = "", 
         bgColour = "ffffff", 
         triggerBgColour = "3b82f6",
-        children 
+        children = null
     } = $props();
     
     let isOpen = $state(false);
@@ -67,7 +67,6 @@
     }
 </script>
 
-<!-- Trigger Button -->
 <button 
     class="w-fit rounded-lg p-1.5 pl-3 pr-3 m-4 font-medium shadow-md border cursor-pointer"
     style="background-color: #{bgColour}; hover:background-color: #{darkerBg}; border-color: #{darkerBg};"
@@ -76,7 +75,6 @@
     {triggerText}
 </button>
 
-<!-- Modal -->
 {#if isOpen}
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -104,7 +102,7 @@
             
             <div class="modal-body">
                 {#if children}
-                    {@render children()}
+                    {@render children?.()}
                 {/if}
             </div>
         </div>

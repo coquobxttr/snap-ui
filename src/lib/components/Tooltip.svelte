@@ -7,7 +7,7 @@
         placement = "top", 
         trigger = "hover",
         arrow = true,
-        children
+        children = null
     } = $props();
     
     let tooltipElement: HTMLDivElement | undefined = $state();
@@ -130,7 +130,7 @@
         style="top: {tooltipPosition.top}px; left: {tooltipPosition.left}px;"
     >
         {#if children}
-            {@render children()}
+            {@render children?.()}
         {:else}
             {content}
         {/if}

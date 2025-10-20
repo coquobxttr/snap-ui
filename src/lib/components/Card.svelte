@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 
     let { 
-        children,
+        children = null,
         width = "100",
         height = "100",
         bgColour = "ffffff",
@@ -37,16 +37,16 @@
 {#if prose === "false"}
     <div
         class="max-w-[90vw] md:max-w-full rounded-xl m-4 shadow-md border flex flex-col p-4"
-        style="width: {width}; height: {height}; background-color: #{bgColour}; border-color: #{borderColour}"
+        style="width: {width}; minimum-height: {height}; background-color: #{bgColour}; border-color: #{borderColour}"
     >
-        {@render children()}
+        {@render children?.()}
     </div>
 {:else if prose === "true"}
     <div
         class="max-w-[90vw] md:max-w-full rounded-xl m-4 shadow-md border flex flex-col p-4 prose"
-        style="width: {width}; height: {height}; background-color: #{bgColour}; border-color: #{borderColour}"
+        style="width: {width}; minimum-height: {height}; background-color: #{bgColour}; border-color: #{borderColour}"
     >
-        {@render children()}
+        {@render children?.()}
     </div>  
 {/if} 
 

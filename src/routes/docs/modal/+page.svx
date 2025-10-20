@@ -1,0 +1,7 @@
+---
+title: "Modal"
+desc: "A customizable button component with automatic text contrast and hover effects."
+category: "Components"
+order: 11
+---
+empty

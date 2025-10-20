@@ -1,4 +1,3 @@
-<!-- src/lib/components/CodeTabs.svelte -->
 <script>
     import { onMount } from 'svelte';
     
@@ -47,7 +46,6 @@
 </script>
 
 <div class=" w-4/5 my-6 rounded-xl border border-gray-200 overflow-hidden bg-gray-800 shadow-lg">
-    <!-- Tab Headers -->
     <div class="flex h-10 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
         {#each tabs as tab}
             <button
@@ -63,7 +61,6 @@
         {/each}
     </div>
     
-    <!-- Code Content -->
     <div class="relative">
         {#each tabs as tab}
             {#if activeTab === tab.id}
@@ -73,7 +70,6 @@
             {/if}
         {/each}
         
-        <!-- Copy Button -->
         <!-- svelte-ignore a11y_consider_explicit_label -->
         <button
             onclick={copyToClipboard}

@@ -5,7 +5,7 @@
         targetId, 
         placement = "top", 
         bgColour = "ffffff",
-        children
+        children = null
     } = $props();
     
     let DropdownElement: HTMLDivElement | undefined = $state();
@@ -56,7 +56,6 @@
     }
     
     onMount(() => {
-        // Find the target element by ID
         targetElement = document.getElementById(targetId);
         
         if (!targetElement) {
@@ -64,7 +63,6 @@
             return;
         }
         
-        // Add event listeners
         targetElement.addEventListener('click', toggleDropdown);
         document.addEventListener('click', handleOutsideClick);
         
@@ -80,8 +78,8 @@
     
     async function showDropdown() {
         isVisible = true;
-        await tick(); // Wait for DOM update
-        await tick(); // Extra tick to ensure Dropdown is fully rendered
+        await tick();
+        await tick();
         calculatePosition();
     }
     
@@ -159,7 +157,7 @@
                 top: {dropdownPosition.top}px;
                 left: {dropdownPosition.left}px;"
     >
-    {@render children()}
+    {@render children?.()}
     </div>
 {/if}
 

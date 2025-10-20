@@ -1,6 +1,6 @@
 {
-	"name": "nora-kit",
-	"version": "0.1.6-alpha",
+	"name": "snap-ui",
+	"version": "0.0.1",
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
@@ -70,6 +70,7 @@
 	"type": "module",
 	"types": "./dist/index.d.ts",
 	"dependencies": {
+		"@lucide/svelte": "^0.535.0",
 		"lucide-svelte": "^0.515.0",
 		"shiki": "^3.6.0"
 	}

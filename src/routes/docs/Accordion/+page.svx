@@ -5,14 +5,14 @@ category: "Components"
 order: 3
 ---
 <script>
-import { Nora } from "../../../lib/index.ts";
+import { Snap } from "../../../lib/index.ts";
 </script>
 
 ## Basic Usage
 
 ```svelte
 <script>
-    import { Nora } from 'nora-kit';
+    import { Snap } from 'nora-kit';
 
     const items = [
         {
@@ -26,7 +26,7 @@ import { Nora } from "../../../lib/index.ts";
     ];
 </script>
 
-<Nora.Accordion {items}/>
+<Snap.Accordion {items}/>
 ```
 
 ## Props
@@ -42,7 +42,7 @@ import { Nora } from "../../../lib/index.ts";
 
 ### Basic Accordion
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Accordion
+    <Snap.Accordion
         width={400}
         allowMultiple={false}
         items={[
@@ -59,7 +59,7 @@ import { Nora } from "../../../lib/index.ts";
 </div>
 
 ```svelte
-<Nora.Accordion
+<Snap.Accordion
     width={400}
     allowMultiple={false}
     items={[
@@ -78,7 +78,7 @@ import { Nora } from "../../../lib/index.ts";
 ### Multiple Panels Open
 
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Accordion
+    <Snap.Accordion
         width={400}
         allowMultiple={true}
         items={[
@@ -96,7 +96,7 @@ import { Nora } from "../../../lib/index.ts";
 
 ```svelte
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Accordion
+    <Snap.Accordion
         width={400}
         allowMultiple={true}
         items={[
@@ -116,7 +116,7 @@ import { Nora } from "../../../lib/index.ts";
 ### Custom Styling
 
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Accordion
+    <Snap.Accordion
         bgColour="2563eb"
         width={500}
         items={[
@@ -129,7 +129,7 @@ import { Nora } from "../../../lib/index.ts";
 </div>
 
 ```svelte
-<Nora.Accordion
+<Snap.Accordion
     bgColour="2563eb"
     width={500}
     items={[
@@ -144,7 +144,7 @@ import { Nora } from "../../../lib/index.ts";
 ### Rich HTML Content
 
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Accordion
+    <Snap.Accordion
         items={[
         {
             title: "Rich Content",
@@ -163,7 +163,7 @@ import { Nora } from "../../../lib/index.ts";
 </div>
 
 ```svelte
-<Nora.Accordion
+<Snap.Accordion
     items={[
     {
         title: "Rich Content",

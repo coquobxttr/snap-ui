@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Nora } from "./index.js";
+	import { Snap } from "./index.js";
     import { goto } from "$app/navigation";
     import { onMount } from "svelte";
     import { page } from "$app/state";
@@ -117,11 +117,11 @@
     }
 
     function nextPage(order: number) {
-        goto(`/docs/${docs[order].title}`)
+        goto(`/docs/${docs[order].title.toLowerCase()}`)
     }
 
     function prevPage(order: number) {
-        goto(`/docs/${docs[order-2].title}`)
+        goto(`/docs/${docs[order-2].title.toLowerCase()}`)
     }
 </script>
 
@@ -129,8 +129,8 @@
 <!--Snippets-->
 {#snippet nextDocsPage()}
     <a
-        href="/docs/{docs[order].title}"
-        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col w-1/2 h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300"
+        href="/docs/{docs[order].title.toLowerCase()}"
+        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300"
     >
         <p class="text-right text-sm">Next page</p>
         <p class="font-medium text-right">{docs[order].title}</p>
@@ -139,8 +139,8 @@
 
 {#snippet prevDocsPage()}
     <a
-        href="/docs/{docs[order - 2].title}"
-        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col w-1/2 h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300"
+        href="/docs/{docs[order - 2].title.toLowerCase()}"
+        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300"
     >
         <p class=" text-sm">Previous page</p>
        <p class="font-medium text-left">{docs[order - 2].title}</p>
@@ -148,7 +148,7 @@
 {/snippet}
 
 
-<div id="Main" class="grid grid-cols-[1fr_2.5fr_1fr] h-[calc(100vh-115px)]">
+<div id="Main" class="grid grid-cols-[1fr_2.5fr_1fr] h-[calc(100vh-119px)]">
     <div id="contentsColumn" class="prose hidden md:block m-10 overflow-y-auto h-full">
         <h3 class="mb-4">Contents</h3>
         <ul class="space-y-2 p-0 list-none">
@@ -161,7 +161,7 @@
                                 <button 
                                     class="w-full p-1 text-left text-sm transition-color bg-gray-100 pl-3 rounded-md"
                                     onclick={() => {
-                                        goto(`/docs/${doc.title}`)
+                                        goto(`/docs/${doc.title.toLowerCase()}`)
                                         }}
                                 >
                                     {doc.title}
@@ -172,7 +172,7 @@
                                 <button 
                                     class="w-full text-left text-sm p-1 hover:bg-gray-100 transition-colors pl-3 rounded-md"
                                     onclick={() => {
-                                        goto(`/docs/${doc.title}`)
+                                        goto(`/docs/${doc.title.toLowerCase()}`)
                                         }}
                                 >
                                     {doc.title}
@@ -190,28 +190,32 @@
                 <h1 class="mb-0">{title}</h1>
                 <p class="text-gray-500">{desc}</p>
             </div>
-            <div class="flex justify-center items-center h-fit min-w-24 ml-auto pr-10 mt-10">
+            <div class="grid grid-cols-2 ml-auto pr-10 mt-10">
                 {#if (order == 1)}
+                    <div></div>
                     <div class="ml-12">
-                        <Nora.Button margin={4} onClick={() => nextPage(order)}>&gt;</Nora.Button>
+                        <Snap.Button margin={4} onClick={() => nextPage(order)}>&gt;</Snap.Button>
                     </div>
                 {:else if (order >= docs.length)}
-                    <Nora.Button margin={4} onClick={() => prevPage(order)}>&lt;</Nora.Button>
+                    <Snap.Button margin={4} onClick={() => prevPage(order)}>&lt;</Snap.Button>
+                    <div></div>
                 {:else}
-                    <Nora.Button margin={4} onClick={() => prevPage(order)}>&lt;</Nora.Button>
-                    <Nora.Button margin={4} onClick={() => nextPage(order)}>&gt;</Nora.Button>
+                    <Snap.Button margin={4} onClick={() => prevPage(order)}>&lt;</Snap.Button>
+                    <Snap.Button margin={4} onClick={() => nextPage(order)}>&gt;</Snap.Button>
                 {/if}                
             </div>
         </div>
-        <div class="prose my-10 p-10">
+        <div class="prose p-10 mx-auto max-w-full">
             {@render children()}
         </div>
-        <div class="flex flex-row justify-center items-center w-full h-fit mb-10">
+        <div class="grid grid-cols-2 w-full h-20 mb-10">
             {#if (docs.length > 0)}
                 {#if (order == 1)}
+                    <div></div>
                     {@render nextDocsPage()}
                 {:else if (order >= docs.length)}
                     {@render prevDocsPage()}
+                    <div></div>
                 {:else}
                     {@render prevDocsPage()}
                     {@render nextDocsPage()}

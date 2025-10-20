@@ -5,17 +5,17 @@ category: "Getting Started"
 order: 2
 ---
 <script>
-    import { Nora } from "../../../lib/index.ts"
+    import { Snap } from "../../../lib/index.ts"
 </script>
 
 ### Package Manager
 
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.CodeTab npm="npm install nora-kit" pnpm="pnpm add nora-kit" yarn="yarn add nora-kit" bun="bun add nora-kit"/>
+    <Snap.CodeTab npm="npm install snap-ui" pnpm="pnpm add snap-ui" yarn="yarn add snap-ui" bun="bun add snap-ui"/>
 </div>
 
 ### Tailwindcss
-NoraKit uses **Tailwind v4.1** with the **typography and forms** plugins. See the [website](https://tailwindcss.com/docs/installation/framework-guides/sveltekit) for a more detailed tutorial on how to install.
+SnapUI uses **Tailwind v4.1** with the **typography and forms** plugins. See the [website](https://tailwindcss.com/docs/installation/framework-guides/sveltekit) for a more detailed tutorial on how to install.
 
 ```bash
 npm install -D @tailwindcss/typography
@@ -28,7 +28,7 @@ Link tailwind to the package components
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
-+ @source "../node_modules/nora-kit/dist/components";
++ @source "../node_modules/snap-ui/dist/components";
 ```
 
 

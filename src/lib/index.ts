@@ -3,12 +3,13 @@ import Button from "./components/Button.svelte";
 import Card from "./components/Card.svelte";
 import CodeTab from "./components/CodeTab.svelte";
 import Divider from "./components/Divider.svelte";
+import Drawer from "./components/Drawer.svelte";
 import Dropdown from "./components/Dropdown.svelte";
 import Hero from "./components/Hero.svelte";
 import Modal from "./components/Modal.svelte";
 import Tooltip from "./components/Tooltip.svelte";
 
-export const Nora = {
+export const Snap = {
     Button: Button,
     Card: Card,
     Tooltip: Tooltip,
@@ -17,5 +18,8 @@ export const Nora = {
     Accordion: Accordian,
     Hero: Hero,
     CodeTab: CodeTab,
-    Divider: Divider
+    Divider: Divider,
+    Drawer: Drawer
 }
+
+export default Snap;

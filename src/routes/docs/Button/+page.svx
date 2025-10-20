@@ -5,17 +5,17 @@ category: "Components"
 order: 4
 ---
 <script>
-import { Nora } from "../../../lib/index.ts";
+import { Snap } from "../../../lib/index.ts";
 </script>
 
 ## Basic Usage
 
 ```svelte
 <script>
-    import { Nora } from 'nora-kit';
+    import { Snap } from 'nora-kit';
 </script>
 
-<Nora.Button>Click me</Nora.Button>
+<Snap.Button>Click me</Snap.Button>
 ```
 
 ## Props
@@ -32,50 +32,50 @@ import { Nora } from "../../../lib/index.ts";
 
 ### Basic Button
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Button>Default Button</Nora.Button>
+    <Snap.Button>Default Button</Snap.Button>
 </div>
 
 ```svelte
-<Nora.Button>Default Button</Nora.Button>
+<Snap.Button>Default Button</Snap.Button>
 ```
 
 ### Custom Colors
 
 <div class="flex justify-center items-center mt-15 mb-15 gap-4">
-    <Nora.Button bgColour="fadedc">Pink</Nora.Button>
-    <Nora.Button bgColour="8F00FF">Violet</Nora.Button>
-    <Nora.Button bgColour="16a34a">Green</Nora.Button>
+    <Snap.Button bgColour="fadedc">Pink</Snap.Button>
+    <Snap.Button bgColour="8F00FF">Violet</Snap.Button>
+    <Snap.Button bgColour="16a34a">Green</Snap.Button>
 </div>
 
 ```svelte
-<Nora.Button bgColour="2563eb">Blue Button</Nora.Button>
-<Nora.Button bgColour="dc2626">Red Button</Nora.Button>
-<Nora.Button bgColour="16a34a">Green Button</Nora.Button>
+<Snap.Button bgColour="2563eb">Blue Button</Snap.Button>
+<Snap.Button bgColour="dc2626">Red Button</Snap.Button>
+<Snap.Button bgColour="16a34a">Green Button</Snap.Button>
 ```
 
 ### Dark Colors with Text Auto-Contrast
 
 <div class="flex justify-center items-center mt-15 mb-15 gap-4">
-    <Nora.Button bgColour="1f2937">Dark Gray</Nora.Button>
-    <Nora.Button bgColour="7c2d12">Dark Brown</Nora.Button>
-    <Nora.Button bgColour="581c87">Dark Purple</Nora.Button>
+    <Snap.Button bgColour="1f2937">Dark Gray</Snap.Button>
+    <Snap.Button bgColour="7c2d12">Dark Brown</Snap.Button>
+    <Snap.Button bgColour="581c87">Dark Purple</Snap.Button>
 </div>
 
 ```svelte
-<Nora.Button bgColour="1f2937">Dark Gray</Nora.Button>
-<Nora.Button bgColour="7c2d12">Dark Brown</Nora.Button>
-<Nora.Button bgColour="581c87">Dark Purple</Nora.Button>
+<Snap.Button bgColour="1f2937">Dark Gray</Snap.Button>
+<Snap.Button bgColour="7c2d12">Dark Brown</Snap.Button>
+<Snap.Button bgColour="581c87">Dark Purple</Snap.Button>
 ```
 
 ### With Click Handler
 
 <div class="flex justify-center items-center mt-15 mb-15">
-    <Nora.Button 
+    <Snap.Button 
         bgColour="f59e0b" 
         onClick={(e) => alert('Button clicked!')}
     >
         Click for Alert
-    </Nora.Button>
+    </Snap.Button>
 </div>
 
 ```svelte
@@ -86,26 +86,26 @@ import { Nora } from "../../../lib/index.ts";
     }
 </script>
 
-<Nora.Button 
+<Snap.Button 
     bgColour="f59e0b" 
     onClick={handleClick}
 >
     Click for Alert
-</Nora.Button>
+</Snap.Button>
 ```
 
 ### Custom Spacing
 
 <div class="flex justify-center items-center mt-15 mb-15 gap-8">
-    <Nora.Button margin={8}>Small Margin</Nora.Button>
-    <Nora.Button margin={24}>Default Margin</Nora.Button>
-    <Nora.Button margin={40}>Large Margin</Nora.Button>
+    <Snap.Button margin={8}>Small Margin</Snap.Button>
+    <Snap.Button margin={24}>Default Margin</Snap.Button>
+    <Snap.Button margin={40}>Large Margin</Snap.Button>
 </div>
 
 ```svelte
-<Nora.Button margin={8}>Small Margin</Nora.Button>
-<Nora.Button margin={24}>Default Margin</Nora.Button>
-<Nora.Button margin={40}>Large Margin</Nora.Button>
+<Snap.Button margin={8}>Small Margin</Snap.Button>
+<Snap.Button margin={24}>Default Margin</Snap.Button>
+<Snap.Button margin={40}>Large Margin</Snap.Button>
 ```
 
 ## Behavior

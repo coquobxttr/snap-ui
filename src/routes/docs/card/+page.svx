@@ -1,0 +1,7 @@
+---
+title: "Card"
+desc: "A customizable button component with automatic text contrast and hover effects."
+category: "Components"
+order: 5
+---
+empty

@@ -1,7 +1,7 @@
 import path from 'path'
 import { fileURLToPath } from 'url';
 import { mdsvex, escapeSvelte } from 'mdsvex';
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { createHighlighter } from 'shiki';
 
@@ -24,7 +24,12 @@ const config = {
 			}
 		},
 	})],
-	kit: { adapter: adapter() },
+	kit: {
+		adapter: adapter(),
+		paths: {
+			base: process.env.NODE_ENV === 'production' ? '/snap-ui' : ''
+		}
+	},
 	extensions: ['.svelte', '.svx']
 };
 

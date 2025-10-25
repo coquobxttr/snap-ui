@@ -1,4 +1,4 @@
-# **SnapUI - a Sveltekit UI Component Library**
+# **[SnapUI](https://coquobxttr.github.io/snap-ui/) - a Sveltekit UI Component Library**
 
 A small collection of Svelte components. They're accessible, customizable, and don't try to do too much.
 

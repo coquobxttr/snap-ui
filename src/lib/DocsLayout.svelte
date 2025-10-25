@@ -129,7 +129,7 @@
 <!--Snippets-->
 {#snippet nextDocsPage()}
     <a
-        href="/docs/{docs[order].title.toLowerCase()}"
+        href="docs/{docs[order].title.toLowerCase()}"
         class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300"
     >
         <p class="text-right text-sm">Next page</p>
@@ -139,7 +139,7 @@
 
 {#snippet prevDocsPage()}
     <a
-        href="/docs/{docs[order - 2].title.toLowerCase()}"
+        href="docs/{docs[order - 2].title.toLowerCase()}"
         class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300"
     >
         <p class=" text-sm">Previous page</p>

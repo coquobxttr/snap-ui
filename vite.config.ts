@@ -4,6 +4,10 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+	base: '/snap-ui/',
+	build: {
+		outDir: 'docs'
+	},
 	plugins: [tailwindcss(), sveltekit()],
 	test: {
 		projects: [

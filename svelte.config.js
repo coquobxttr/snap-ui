@@ -31,8 +31,8 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
-		prerender: {
-			entries: ['*']
+		paths: {
+      		base: process.env.NODE_ENV === 'production' ? '/your-repo-name' : ''
 		}
 	},
 	extensions: ['.svelte', '.svx']

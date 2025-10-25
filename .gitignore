@@ -3,4 +3,5 @@
 /.prettierignore
 /.prettierrc
 /.svelte-kit
+/.vscode
 /node_modules

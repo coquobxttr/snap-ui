@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { Snap } from '$lib/index.js';
 	import { onMount } from 'svelte';
 

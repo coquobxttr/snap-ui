@@ -128,23 +128,27 @@
 
 <!--Snippets-->
 {#snippet nextDocsPage()}
-    <a
-        href="docs/{docs[order].title.toLowerCase()}"
-        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300"
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div
+        onclick={() => goto(`/docs/${docs[order].title.toLowerCase()}`)}
+        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300 cursor-pointer"
     >
         <p class="text-right text-sm">Next page</p>
         <p class="font-medium text-right">{docs[order].title}</p>
-    </a>
+</div>
 {/snippet}
 
 {#snippet prevDocsPage()}
-    <a
-        href="docs/{docs[order - 2].title.toLowerCase()}"
-        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300"
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div
+        onclick={() => goto(`/docs/${docs[order - 2].title.toLowerCase()}`)}
+        class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300 cursor-pointer"
     >
         <p class=" text-sm">Previous page</p>
        <p class="font-medium text-left">{docs[order - 2].title}</p>
-    </a>
+</div>
 {/snippet}
 
 

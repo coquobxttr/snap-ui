@@ -117,11 +117,11 @@
     }
 
     function nextPage(order: number) {
-        goto(`/docs/${docs[order].title.toLowerCase()}`)
+        goto(`/snap-ui/docs/${docs[order].title.toLowerCase()}`)
     }
 
     function prevPage(order: number) {
-        goto(`/docs/${docs[order-2].title.toLowerCase()}`)
+        goto(`/snap-ui/docs/${docs[order-2].title.toLowerCase()}`)
     }
 </script>
 
@@ -161,7 +161,7 @@
                                 <button 
                                     class="w-full p-1 text-left text-sm transition-color bg-gray-100 pl-3 rounded-md"
                                     onclick={() => {
-                                        goto(`/docs/${doc.title.toLowerCase()}`)
+                                        goto(`/snap-ui/docs/${doc.title.toLowerCase()}`)
                                         }}
                                 >
                                     {doc.title}
@@ -172,7 +172,7 @@
                                 <button 
                                     class="w-full text-left text-sm p-1 hover:bg-gray-100 transition-colors pl-3 rounded-md"
                                     onclick={() => {
-                                        goto(`/docs/${doc.title.toLowerCase()}`)
+                                        goto(`/snap-ui/docs/${doc.title.toLowerCase()}`)
                                         }}
                                 >
                                     {doc.title}

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
     import { Snap } from "$lib/index.js";
-    
 </script>
 
 <div id="Main" class="flex flex-col items-center">
@@ -9,7 +8,7 @@
         <h1>Make your websites shine with SnapUI</h1>
         <p>A modern, lightweight component library for SvelteKit that helps you build beautiful interfaces faster</p>
         <div class="flex flex-row">
-            <Snap.Button onClick={() => goto('/snap-ui/docs/introduction')}>Get Started</Snap.Button>
+            <Snap.Button onClick={() => goto('/docs/introduction')}>Get Started</Snap.Button>
             <a target="_blank" href="https://www.github.com/coquobxttr/nora-kit">
                 <Snap.Button bgColour="000000">View on Github</Snap.Button>
             </a>

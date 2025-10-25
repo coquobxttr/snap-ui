@@ -25,7 +25,15 @@ const config = {
 		},
 	})],
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			routes: {
+			include: ['/*'],
+			exclude: ['<all>']
+			}
+		}),
+		prerender: {
+			entries: ['*']
+		}
 	},
 	extensions: ['.svelte', '.svx']
 };

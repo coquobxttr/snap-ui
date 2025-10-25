@@ -17,7 +17,7 @@
             <div class="flex flex-col items-end justify-center">
                 <h1 class="pr-5">Uh Oh!</h1>
                 <p class="pr-5">This page doesn't exist. Maybe something went wrong.</p>
-                <Snap.Button bgColour="FF0000" onClick={() => goto('/')}>Go Back</Snap.Button>
+                <Snap.Button bgColour="FF0000" onClick={() => goto('/snap-ui')}>Go Back</Snap.Button>
             </div>
         </div>
     </Snap.Hero>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
 	import { Snap } from '$lib/index.js';
 	import { onMount } from 'svelte';
 
@@ -36,7 +35,7 @@
 <div class="w-screen h-screen">
 	<header class="relative w-full flex flex-row items-center z-50 bg-white">
 		<div class="hidden md:block ml-5">
-			<Snap.Button onClick={() => goto('/')}>SnapUI</Snap.Button>
+			<Snap.Button onClick={() => goto('/snap-ui')}>SnapUI</Snap.Button>
 		</div>
 
 		<div class="block md:hidden">
@@ -44,9 +43,9 @@
 		</div>
 
 		<div class="hidden md:flex">
-			{@render headingButton("Components", "/docs/accordion")}
-			{@render headingButton("Blocks", "/blocks")}
-			{@render headingButton("Themes", "/themes")}
+			{@render headingButton("Components", "/snap-ui/docs/accordion")}
+			{@render headingButton("Blocks", "/snap-ui/blocks")}
+			{@render headingButton("Themes", "/snap-ui/themes")}
 		</div>
 
 		<div class="flex-row justify-center items-center right-0 ml-auto p-5 hidden md:flex">
@@ -65,8 +64,8 @@
 		</div>
 	</header>
 	<Snap.Drawer zIndex={50} trigger={drawer}>
-		<Snap.Button onClick={() => goto('/')}>Home</Snap.Button>
-		<Snap.Button onClick={() => goto('/docs/accordion')}>Components</Snap.Button>
+		<Snap.Button onClick={() => goto('/snap-ui')}>Home</Snap.Button>
+		<Snap.Button onClick={() => goto('/snap-ui/docs/accordion')}>Components</Snap.Button>
 	</Snap.Drawer>
 	{@render children()}
 	<footer id="footer" class="w-full h-fit flex justify-center items-center">

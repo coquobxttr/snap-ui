@@ -34,7 +34,7 @@ const config = {
 			strict: false
 		}),
 		paths: {
-      		base: '/snap-ui'
+      		base: dev ? '' : '/snap-ui'
 		}
 	},
 	extensions: ['.svelte', '.svx']

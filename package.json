@@ -71,7 +71,6 @@
 	"types": "./dist/index.d.ts",
 	"dependencies": {
 		"@lucide/svelte": "^0.535.0",
-		"@sveltejs/adapter-cloudflare": "^7.2.4",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"shiki": "^3.13.0",
 		"wrangler": "^4.43.0"

@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { Snap } from '$lib/index.js';
 	import { onMount } from 'svelte';
+	import { resolve } from '$app/paths';
 
 	let { children } = $props();
 	let drawer = $state(false);
@@ -27,7 +28,7 @@
 </script>
 
 {#snippet headingButton(text: string, link: string)}
-	<Snap.Button shadow={false} border={false} onClick={() => goto(link)}>
+	<Snap.Button shadow={false} border={false} onClick={() => goto(resolve(`/${link}` as any))}>
 		{text}
 	</Snap.Button>
 {/snippet}
@@ -35,7 +36,7 @@
 <div class="w-screen h-screen">
 	<header class="relative w-full flex flex-row items-center z-50 bg-white">
 		<div class="hidden md:block ml-5">
-			<Snap.Button onClick={() => goto('/')}>SnapUI</Snap.Button>
+			<Snap.Button onClick={() => goto(resolve('/'))}>SnapUI</Snap.Button>
 		</div>
 
 		<div class="block md:hidden">
@@ -64,8 +65,8 @@
 		</div>
 	</header>
 	<Snap.Drawer zIndex={50} trigger={drawer}>
-		<Snap.Button onClick={() => goto('/')}>Home</Snap.Button>
-		<Snap.Button onClick={() => goto('/docs/accordion')}>Components</Snap.Button>
+		<Snap.Button onClick={() => goto(resolve('/'))}>Home</Snap.Button>
+		<Snap.Button onClick={() => goto(resolve('/docs/accordion'))}>Components</Snap.Button>
 	</Snap.Drawer>
 	{@render children()}
 	<footer id="footer" class="w-full h-fit flex justify-center items-center">

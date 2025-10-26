@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
     import { Snap } from "$lib/index.js";
 </script>
 
@@ -8,7 +9,7 @@
         <h1>Make your websites shine with SnapUI</h1>
         <p>A modern, lightweight component library for SvelteKit that helps you build beautiful interfaces faster</p>
         <div class="flex flex-row">
-            <Snap.Button onClick={() => goto('/docs/introduction')}>Get Started</Snap.Button>
+            <Snap.Button onClick={() => goto(resolve('/docs/introduction'))}>Get Started</Snap.Button>
             <a target="_blank" href="https://www.github.com/coquobxttr/snap-ui">
                 <Snap.Button bgColour="000000">View on Github</Snap.Button>
             </a>

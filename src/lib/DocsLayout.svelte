@@ -3,6 +3,7 @@
     import { goto } from "$app/navigation";
     import { onMount } from "svelte";
     import { page } from "$app/state";
+	import { resolve } from "$app/paths";
 
     let { children, title, desc, order, category} = $props();
 
@@ -117,11 +118,11 @@
     }
 
     function nextPage(order: number) {
-        goto(`/docs/${docs[order].title.toLowerCase()}`)
+        goto(resolve(`/docs/${docs[order].title.toLowerCase()}` as any))
     }
 
     function prevPage(order: number) {
-        goto(`/docs/${docs[order-2].title.toLowerCase()}`)
+        goto(resolve(`/docs/${docs[order-2].title.toLowerCase()}` as any))
     }
 </script>
 
@@ -131,7 +132,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
-        onclick={() => goto(`/docs/${docs[order].title.toLowerCase()}`)}
+        onclick={() => goto(resolve(`/docs/${docs[order].title.toLowerCase()}` as any))}
         class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 ml-2 p-5 rounded-lg border border-gray-300 cursor-pointer"
     >
         <p class="text-right text-sm">Next page</p>
@@ -143,7 +144,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
-        onclick={() => goto(`/docs/${docs[order - 2].title.toLowerCase()}`)}
+        onclick={() => goto(resolve(`/docs/${docs[order - 2].title.toLowerCase()}` as any))}
         class="transition duration-150 ease-in-out bg-white hover:bg-gray-100 flex flex-col h-full mx-10 mr-2 p-5 rounded-lg border border-gray-300 cursor-pointer"
     >
         <p class=" text-sm">Previous page</p>
@@ -165,7 +166,7 @@
                                 <button 
                                     class="w-full p-1 text-left text-sm transition-color bg-gray-100 pl-3 rounded-md"
                                     onclick={() => {
-                                        goto(`/docs/${doc.title.toLowerCase()}`)
+                                        goto(resolve(`/docs/${doc.title.toLowerCase()}` as any))
                                         }}
                                 >
                                     {doc.title}
@@ -176,7 +177,7 @@
                                 <button 
                                     class="w-full text-left text-sm p-1 hover:bg-gray-100 transition-colors pl-3 rounded-md"
                                     onclick={() => {
-                                        goto(`/docs/${doc.title.toLowerCase()}`)
+                                        goto(resolve(`/docs/${doc.title.toLowerCase()}` as any))
                                         }}
                                 >
                                     {doc.title}
